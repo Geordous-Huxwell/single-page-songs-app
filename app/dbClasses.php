@@ -51,4 +51,25 @@ class SongDB {
       return $statement->fetchAll(); 
   } 
 }
+
+class ArtistDB {
+   private static $baseSQL = "SELECT * FROM artists"; 
+   
+   public function __construct($connection) { 
+       $this->pdo = $connection; 
+   } 
+
+   public function getAll() { 
+      $sql = self::$baseSQL; 
+      $statement = DatabaseHelper::runQuery($this->pdo, $sql, null); 
+      return $statement->fetchAll(); 
+  }
+  
+   public function getArtistName($artistID) { 
+      $sql = self::$baseSQL . " WHERE artists.Artist_ID=?";
+      $statement = DatabaseHelper::runQuery($this->pdo, $sql, Array($artistID)); 
+      $artistArray = $statement->fetchAll();
+      return $artistArray[0]["artist_name"]; 
+     }
+}
  ?>

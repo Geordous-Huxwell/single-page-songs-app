@@ -3,8 +3,11 @@ require_once 'config.inc.php';
 require_once 'dbClasses.php';
 
 $conn = DatabaseHelper::createConnection(array(DBCONNSTRING, DBUSER, DBPASS));
-$songDB = new SongDB($conn);
-echo json_encode($songDB->getAll());
+// $songDB = new SongDB($conn);
+// echo json_encode($songDB->getAll());
+
+$artistDB = new ArtistDB($conn);
+echo json_encode($artistDB->getArtistName(75));
 
 $title = "Title";
 $artist = "Artist";
