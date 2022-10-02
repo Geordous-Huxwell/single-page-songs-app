@@ -49,7 +49,13 @@ class SongDB {
       $sql = self::$baseSQL; 
       $statement = DatabaseHelper::runQuery($this->pdo, $sql, null); 
       return $statement->fetchAll(); 
-  } 
+  }
+
+  public function getSongData($songID) { 
+   $sql = self::$baseSQL . " WHERE song_id=?"; 
+   $statement = DatabaseHelper::runQuery($this->pdo, $sql, Array($songID)); 
+   return $statement->fetchAll(); 
+}
 }
 
 class ArtistDB {

@@ -3,18 +3,28 @@ require_once 'config.inc.php';
 require_once 'dbClasses.php';
 
 $conn = DatabaseHelper::createConnection(array(DBCONNSTRING, DBUSER, DBPASS));
-// $songDB = new SongDB($conn);
+$songDB = new SongDB($conn);
 // echo json_encode($songDB->getAll());
+$songData = $songDB->getSongData(1001)[0];
+echo json_encode($songData);
 
 $artistDB = new ArtistDB($conn);
-echo json_encode($artistDB->getArtistName(75));
+// echo json_encode($artistDB->getArtistName(75));
 
-$title = "Title";
-$artist = "Artist";
+
+
+$title = $songData["title"];
+$artistID = $songData["artist_id"];
+$artist = $artistDB->getArtistName($artistID);
 $artistType = "Artist Type";
 $genre = "Genre";
-$year = "Year";
-$duration = "0:00";
+$year = $songData["year"];
+$duration = $songData["duration"];
+
+echo $title . "\n";
+echo $artist . "\n";
+echo $year . "\n";
+echo $duration . "\n";
 ?>
 <!-- HTML boilerplate from https://www.freecodecamp.org/news/basic-html5-template-boilerplate-code-example/ -->
 <!DOCTYPE html>
