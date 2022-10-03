@@ -1,0 +1,61 @@
+/* h2 {
+    display: inline-block;
+} */
+
+details {
+    text-align: center;
+}
+
+summary {
+    display: inline-block;
+    border: black 3px solid;
+    border-radius: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    background-color: rgb(203, 70, 70);
+}
+
+summary:hover {
+    cursor: pointer;
+}
+
+ul {
+    border: yellow 1px solid;
+    display: block;
+    /* align-items: center; */
+    justify-content: center;
+    list-style: none;
+}
+
+.title {
+    font-weight: bolder;
+    font-size: 2em;
+    /* outline effect from https://stackoverflow.com/questions/4919076/outline-effect-to-text */
+    text-shadow: -1px -1px 0 whitesmoke, 1px -1px 0 whitesmoke, -1px 1px 0 whitesmoke, 1px 1px 0 whitesmoke;
+}
+
+.artist {
+    font-style: oblique;
+}
+
+.grid {
+    border: green 1px solid;
+    display: grid;
+    grid-template-columns: repeat(4, 150px);
+    grid-template-rows: repeat(2, 150px);
+    gap: 25px;
+    margin: 50px;
+    /* width: auto; */
+    padding-left: 20%;
+    padding-right: 20%;
+}
+
+.grid>* {
+    border: blue 1px solid;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 100px;
+}

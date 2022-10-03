@@ -5,12 +5,13 @@ require_once 'dbClasses.php';
 $conn = DatabaseHelper::createConnection(array(DBCONNSTRING, DBUSER, DBPASS));
 $songDB = new SongDB($conn);
 // echo json_encode($songDB->getAll());
-$songData = $songDB->getSongData(1001)[0];
-echo json_encode($songData);
+$randomSongID = rand(1001, 1318);
+$songData = $songDB->getSongData($randomSongID)[0];
+// echo json_encode($songData);
 
 $artistDB = new ArtistDB($conn);
 // echo json_encode($artistDB->getArtistName(75));
-
+// echo json_encode($artistDB->getAll());
 
 
 $title = $songData["title"];
@@ -19,12 +20,11 @@ $artist = $artistDB->getArtistName($artistID);
 $artistType = "Artist Type";
 $genre = "Genre";
 $year = $songData["year"];
-$duration = $songData["duration"];
+$seconds = $songData["duration"];
+$minutes = floor($seconds/60);
+$seconds = $seconds % 60;
+$duration = $minutes . ":" . $seconds;
 
-echo $title . "\n";
-echo $artist . "\n";
-echo $year . "\n";
-echo $duration . "\n";
 ?>
 <!-- HTML boilerplate from https://www.freecodecamp.org/news/basic-html5-template-boilerplate-code-example/ -->
 <!DOCTYPE html>
@@ -42,6 +42,30 @@ echo $duration . "\n";
     </header>
     <article>
         <h2>Song Info</h2>
+        <details>
+          <summary>
+            <span class="title"><?=$title?></span>
+            <span class="artist"><?=$artist?></span>
+          </summary>
+          <ul>
+            <li>Year: <?=$year?></li>
+            <li>Length: <?=$duration?></li>
+            <li>Genre: <?=$genre?></li>
+            <li>Type: <?=$artistType?></li>
+          </ul>
+          
+        </details>
+        <div class="grid">
+          <div>1</div>
+          <div>2</div>
+          <div>3</div>
+          <div>4</div>
+          <div>5</div>
+          <div>6</div>
+          <div>7</div>
+          <div>8</div>
+        </div>
     </article>
+    <footer>write footer-generating function</footer>
   </body>
 </html>
