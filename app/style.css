@@ -4,6 +4,8 @@ article {
     margin-right: 50px;
     background-color: rgb(233, 217, 197);
     border-radius: 40px;
+    border: 20px rgb(115, 63, 11) solid;
+    box-shadow: 0px 0px 10px 10px;
 }
 
 
@@ -29,6 +31,12 @@ summary {
 
 summary:hover {
     cursor: pointer;
+    background-color: rgb(92, 92, 207);
+}
+
+summary:active {
+    transform: translateX(-1px);
+    transform: translateY(1px);
 }
 
 ul {
@@ -58,8 +66,8 @@ ul {
     gap: 25px;
     margin: 50px;
     /* width: auto; */
-    padding-left: 20%;
-    padding-right: 20%;
+    padding-left: 15%;
+    padding-right: 15%;
 }
 
 .grid>* {
