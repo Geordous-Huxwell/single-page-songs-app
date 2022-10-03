@@ -1,9 +1,19 @@
+article {
+    border: orange 1px solid;
+    margin-left: 50px;
+    margin-right: 50px;
+    background-color: rgb(233, 217, 197);
+    border-radius: 40px;
+}
+
+
 /* h2 {
     display: inline-block;
 } */
 
 details {
     text-align: center;
+    margin-top: 50px;
 }
 
 summary {

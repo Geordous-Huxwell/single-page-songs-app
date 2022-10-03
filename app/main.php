@@ -38,10 +38,10 @@ $duration = $minutes . ":" . $seconds;
   </head>
   <body>
 	<header>COMP 3512 Assign1
-        <h4>Joel Conley, Harshad K.</h4>
+        <h4>Joel Conley, Harshad Krishnaraj</h4>
     </header>
     <article>
-        <h2>Song Info</h2>
+        <!-- <h2>Song Info</h2> -->
         <details>
           <summary>
             <span class="title"><?=$title?></span>
