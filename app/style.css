@@ -41,10 +41,14 @@ summary:active {
 
 ul {
     border: yellow 1px solid;
-    display: block;
+    display: flex;
     /* align-items: center; */
     justify-content: center;
     list-style: none;
+}
+
+li {
+    margin: auto;
 }
 
 .title {
