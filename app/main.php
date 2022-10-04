@@ -35,15 +35,14 @@ $popularity = $songData["popularity"];
 $metrics = [
   "bpm"=>$bpm, 
   "energy"=>$energy, 
-  "danceability"=>$danceability, 
+  "dance"=>$danceability, 
   "liveness"=>$liveness, 
   "valence"=>$valence, 
-  "acousticness"=>$acousticness, 
-  "speechiness"=>$speechiness, 
+  "acoustic"=>$acousticness, 
+  "speech"=>$speechiness, 
   "popularity"=>$popularity
 ];
-// $metrics = array_slice($songData, 5, 12, true);
-echo json_encode($metrics);
+// echo json_encode($metrics);
 function generateMetrics($metrics) {
   foreach($metrics as $metric=>$value){
 ?>
@@ -53,7 +52,7 @@ function generateMetrics($metrics) {
   </div>
   
 <?php
-}
+  }
 }
 ?>
 <!-- HTML boilerplate from https://www.freecodecamp.org/news/basic-html5-template-boilerplate-code-example/ -->
@@ -78,6 +77,7 @@ function generateMetrics($metrics) {
             <span class="artist"><?=$artist?></span>
           </summary>
           <ul>
+            <!-- TODO: Harshad - make this list into a function -->
             <li>Year: <?=$year?></li>
             <li>Length: <?=$duration?></li>
             <li>Genre: <?=$genre?></li>
@@ -88,13 +88,7 @@ function generateMetrics($metrics) {
         <div class="grid">
           
           <?php generateMetrics($metrics); ?>        
-          <!-- <div>2</div>
-          <div>3</div>
-          <div>4</div>
-          <div>5</div>
-          <div>6</div>
-          <div>7</div>
-          <div>8</div> -->
+          
         </div>
     </article>
     <footer>write footer-generating function</footer>

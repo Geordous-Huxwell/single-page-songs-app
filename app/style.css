@@ -16,6 +16,7 @@ h2 {
 details {
     text-align: center;
     margin-top: 50px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
 summary {
@@ -62,7 +63,7 @@ li {
 }
 
 .grid {
-    border: green 1px solid;
+    /* border: green 1px solid; */
     display: grid;
     grid-template-columns: repeat(4, 150px);
     grid-template-rows: repeat(2, 150px);
@@ -74,7 +75,7 @@ li {
 }
 
 .grid>* {
-    border: blue 1px solid;
+    /* border: blue 1px solid; */
     display: flex;
     align-items: center;
     justify-content: center;
@@ -82,14 +83,47 @@ li {
 }
 
 .circle {
-    background-color: orange;
+    background-color: rgb(38, 38, 38);
+    display: grid;
+    grid-template-columns: 1, 50px;
+    grid-template-rows: repeat(2, 50px);
+}
+
+.circle:hover>* {
+    /* border: blue 1px solid; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100px;
+}
+
+.circle:hover>.datatype {
+    color: #E0E722;
+    font-size: 20px;
+}
+
+.circle:hover {
+    width: 175px;
+    height: 175px;
+    /* font-size: 30px; */
 }
 
 .datatype {
-    border: 1px red solid;
-    display: flex;
+    /* border: 1px red solid; */
+    /* display: flex; */
+    text-align: center;
+    font-weight: bolder;
+    color: antiquewhite;
+    font-size: 11px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
 .value {
-    border: 1px blue solid;
+    /* border: 1px blue solid; */
+    text-align: center;
+    font-size: 25px;
+    width: 80px;
+    border-radius: 100px;
+    background-color: antiquewhite;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
