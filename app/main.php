@@ -66,6 +66,8 @@ function generateMetrics($metrics) {
     <link rel="stylesheet" href="style.css">
   </head>
   <body>
+    <!-- TODO: Harshad - make the header element into a function for use on each 
+    page, maybe add some styling as well -->
 	<header>COMP 3512 Assign1
         <h4>Joel Conley, Harshad Krishnaraj</h4>
     </header>
@@ -77,7 +79,7 @@ function generateMetrics($metrics) {
             <span class="artist"><?=$artist?></span>
           </summary>
           <ul>
-            <!-- TODO: Harshad - make this list into a function -->
+            <!-- TODO: Harshad - make this list into a function and style the list items-->
             <li>Year: <?=$year?></li>
             <li>Length: <?=$duration?></li>
             <li>Genre: <?=$genre?></li>
@@ -91,6 +93,9 @@ function generateMetrics($metrics) {
           
         </div>
     </article>
+    <!-- TODO: Harshad - refer to the assignment instructions for what content 
+    should be in the footer and build a function to generate it so it can be 
+    injected into all pages -->
     <footer>write footer-generating function</footer>
   </body>
 </html>

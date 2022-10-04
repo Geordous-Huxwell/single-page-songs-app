@@ -49,6 +49,8 @@ ul {
 
 li {
     margin: auto;
+    /* background-color: olive; */
+    /* border-radius: 100px; */
 }
 
 .title {
@@ -102,10 +104,14 @@ li {
     font-size: 20px;
 }
 
+.circle:hover>.value {
+    font-size: 30px;
+}
+
 .circle:hover {
     width: 175px;
     height: 175px;
-    /* font-size: 30px; */
+    transform: translate(-10px, -10px);
 }
 
 .datatype {
