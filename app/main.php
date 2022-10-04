@@ -24,7 +24,37 @@ $seconds = $songData["duration"];
 $minutes = floor($seconds/60);
 $seconds = $seconds % 60;
 $duration = $minutes . ":" . $seconds;
-
+$bpm = $songData["bpm"];
+$energy = $songData["energy"];
+$danceability = $songData["danceability"];
+$liveness = $songData["liveness"];
+$valence = $songData["valence"];
+$acousticness = $songData["acousticness"];
+$speechiness = $songData["speechiness"];
+$popularity = $songData["popularity"];
+$metrics = [
+  "bpm"=>$bpm, 
+  "energy"=>$energy, 
+  "danceability"=>$danceability, 
+  "liveness"=>$liveness, 
+  "valence"=>$valence, 
+  "acousticness"=>$acousticness, 
+  "speechiness"=>$speechiness, 
+  "popularity"=>$popularity
+];
+// $metrics = array_slice($songData, 5, 12, true);
+echo json_encode($metrics);
+function generateMetrics($metrics) {
+  foreach($metrics as $metric=>$value){
+?>
+  <div class="circle">
+    <div class="datatype"><?=$metric?></div> 
+    <div class="value"><?=$value?></div>
+  </div>
+  
+<?php
+}
+}
 ?>
 <!-- HTML boilerplate from https://www.freecodecamp.org/news/basic-html5-template-boilerplate-code-example/ -->
 <!DOCTYPE html>
@@ -56,14 +86,15 @@ $duration = $minutes . ":" . $seconds;
           
         </details>
         <div class="grid">
-          <div>1</div>
-          <div>2</div>
+          
+          <?php generateMetrics($metrics); ?>        
+          <!-- <div>2</div>
           <div>3</div>
           <div>4</div>
           <div>5</div>
           <div>6</div>
           <div>7</div>
-          <div>8</div>
+          <div>8</div> -->
         </div>
     </article>
     <footer>write footer-generating function</footer>

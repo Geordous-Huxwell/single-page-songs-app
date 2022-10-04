@@ -8,10 +8,10 @@ article {
     box-shadow: 0px 0px 10px 10px;
 }
 
-
-/* h2 {
-    display: inline-block;
-} */
+h2 {
+    /* display: inline-block; */
+    /* color: red; */
+}
 
 details {
     text-align: center;
@@ -42,7 +42,6 @@ summary:active {
 ul {
     border: yellow 1px solid;
     display: flex;
-    /* align-items: center; */
     justify-content: center;
     list-style: none;
 }
@@ -80,4 +79,17 @@ li {
     align-items: center;
     justify-content: center;
     border-radius: 100px;
+}
+
+.circle {
+    background-color: orange;
+}
+
+.datatype {
+    border: 1px red solid;
+    display: flex;
+}
+
+.value {
+    border: 1px blue solid;
 }
