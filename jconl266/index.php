@@ -1,22 +1,9 @@
 <?php
 require_once './main.php';
+
+generateHeader(); 
 ?>
-<!-- HTML boilerplate from https://www.freecodecamp.org/news/basic-html5-template-boilerplate-code-example/ -->
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>COMP 3512 Assign1</title>
-    <link rel="stylesheet" href="css/style.css">
-  </head>
-  <body>
-    <!-- TODO: Harshad - make the header element into a function for use on each 
-    page, maybe add some styling as well -->
-	<header>COMP 3512 Assign1
-        <h4>Joel Conley, Harshad Krishnaraj</h4>
-    </header>
+
     <article>
         <!-- <h2>Song Info</h2> -->
         <details>
