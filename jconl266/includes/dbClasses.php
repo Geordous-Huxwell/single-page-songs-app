@@ -5,7 +5,7 @@ class DatabaseHelper {
     $connString = $values[0]; 
     $user = $values[1]; 
     $password = $values[2]; 
-    $pdo = new PDO($connString,$user,$password); 
+    $pdo = new PDO($connString, $user, $password); 
     $pdo->setAttribute(PDO::ATTR_ERRMODE, 
     PDO::ERRMODE_EXCEPTION); 
     $pdo->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, 
@@ -51,11 +51,17 @@ class SongDB {
       return $statement->fetchAll(); 
   }
 
-  public function getSongData($songID) { 
-   $sql = self::$baseSQL . " WHERE song_id=?"; 
-   $statement = DatabaseHelper::runQuery($this->pdo, $sql, Array($songID)); 
-   return $statement->fetchAll(); 
-}
+   public function getSongData($songID) { 
+      $sql = self::$baseSQL . " WHERE song_id=?"; 
+      $statement = DatabaseHelper::runQuery($this->pdo, $sql, Array($songID)); 
+      return $statement->fetchAll(); 
+   }
+
+   public function getSongMetrics($songID) {
+      $sql = "SELECT bpm, energy, danceability as 'dance', liveness as 'live', valence, acousticness as 'acoustic', speechiness as 'speech', popularity FROM songs WHERE song_id=?"; 
+      $statement = DatabaseHelper::runQuery($this->pdo, $sql, Array($songID)); 
+      return $statement->fetchAll();       
+   }
 }
 
 class ArtistDB {

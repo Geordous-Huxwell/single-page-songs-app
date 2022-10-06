@@ -1,12 +1,13 @@
 <?php
-require_once 'config.inc.php';
-require_once 'dbClasses.php';
+require_once './includes/config.inc.php';
+require_once './includes/dbClasses.php';
 
 $conn = DatabaseHelper::createConnection(array(DBCONNSTRING, DBUSER, DBPASS));
 $songDB = new SongDB($conn);
 // echo json_encode($songDB->getAll());
 $randomSongID = rand(1001, 1318);
-$songData = $songDB->getSongData($randomSongID)[0];
+$songID = $randomSongID;
+$songData = $songDB->getSongData($songID)[0];
 // echo json_encode($songData);
 
 $artistDB = new ArtistDB($conn);
@@ -32,16 +33,8 @@ $valence = $songData["valence"];
 $acousticness = $songData["acousticness"];
 $speechiness = $songData["speechiness"];
 $popularity = $songData["popularity"];
-$metrics = [
-  "bpm"=>$bpm, 
-  "energy"=>$energy, 
-  "dance"=>$danceability, 
-  "liveness"=>$liveness, 
-  "valence"=>$valence, 
-  "acoustic"=>$acousticness, 
-  "speech"=>$speechiness, 
-  "popularity"=>$popularity
-];
+$metrics = $songDB->getSongMetrics($songID)[0];
+
 // echo json_encode($metrics);
 function generateMetrics($metrics) {
   foreach($metrics as $metric=>$value){
@@ -49,6 +42,7 @@ function generateMetrics($metrics) {
   <div class="circle">
     <div class="datatype"><?=$metric?></div> 
     <div class="value"><?=$value?></div>
+    <!-- <progress class="value" value='<?=$value?>' max="100"><?=$value?></progress> -->
   </div>
   
 <?php
@@ -63,7 +57,7 @@ function generateMetrics($metrics) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>COMP 3512 Assign1</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/style.css">
   </head>
   <body>
     <!-- TODO: Harshad - make the header element into a function for use on each 
