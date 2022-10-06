@@ -78,9 +78,10 @@ class ArtistDB {
   }
   
    public function getArtistName($artistID) { 
-      $sql = self::$baseSQL . " WHERE artists.Artist_ID=?";
+      $sql = self::$baseSQL . " WHERE Artist_ID=?";
       $statement = DatabaseHelper::runQuery($this->pdo, $sql, Array($artistID)); 
       $artistArray = $statement->fetchAll();
+      // echo json_encode($artistArray);
       return $artistArray[0]["artist_name"]; 
      }
 }

@@ -11,7 +11,7 @@ $songData = $songDB->getSongData($songID)[0];
 // echo json_encode($songData);
 
 $artistDB = new ArtistDB($conn);
-// echo json_encode($artistDB->getArtistName(75));
+echo json_encode($artistDB->getArtistName(75));
 // echo json_encode($artistDB->getAll());
 
 
@@ -76,7 +76,4 @@ function generateHeader()
   
 
 ?>
-
-    
-
-    
+   
