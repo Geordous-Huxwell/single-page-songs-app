@@ -1,8 +1,15 @@
 <?php
 require_once './main.php';
 
-generateHeader();
+
+
 ?>
+
+<html> 
+  
+  <?php
+generateHeader();  
+?> 
 
     <article>
         <!-- <h2>Song Info</h2> -->
@@ -26,9 +33,14 @@ generateHeader();
           
         </div>
     </article>
-    <!-- TODO: Harshad - refer to the assignment instructions for what content 
+    
+  </body>
+
+   <!-- TODO: Harshad - refer to the assignment instructions for what content 
     should be in the footer and build a function to generate it so it can be 
     injected into all pages -->
-    <footer>write footer-generating function</footer>
-  </body>
+
+  <?php
+    generateFooter();
+    ?>
 </html>
