@@ -1,7 +1,7 @@
 <?php
 require_once './main.php';
 
-generateHeader(); 
+generateHeader();
 ?>
 
     <article>
@@ -22,7 +22,7 @@ generateHeader();
         </details>
         <div class="grid">
           
-          <?php generateMetrics($metrics); ?>        
+          <?php generateMetrics($metrics); ?>
           
         </div>
     </article>

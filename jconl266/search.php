@@ -1,7 +1,6 @@
 <?php
 require_once './main.php';
-
-
+// echo json_encode($artistDB);
 ?>
 <body>
     <header>inject header here</header>
@@ -15,11 +14,13 @@ require_once './main.php';
                 </div>
                 <div class="column">
                     <label for="artist">Artist</label>
-                    <input list="artists" name="artist" id="artists">
+                    <input list="artists" name="artist" id="artist">
                     <datalist id="artists">
-                        <option value="artist1">Artist1
-                        <option value="not an artist">
+                    <?php generateArtists($artistDB->getAll()); ?>
+                    
+                        
                     </datalist>
+                    <!-- <?php generateArtists($artistDB); ?> -->
                 </div>
             </div>
         </article>

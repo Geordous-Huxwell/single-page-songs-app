@@ -46,7 +46,7 @@ function generateMetrics($metrics) {
   </div>
 
   <?php
-  }
+  } 
 }
 
 function generateHeader()
@@ -71,7 +71,13 @@ function generateHeader()
 <?php
     }
 
-
+function generateArtists($artistData){
+  
+  foreach ($artistData as $artist){
+    echo "<option value='".$artist['artist_name']."'>";
+  }
+  
+}
   
   
 
