@@ -11,15 +11,37 @@ $songData = $songDB->getSongData($songID)[0];
 // echo json_encode($songData);
 
 $artistDB = new ArtistDB($conn);
-echo json_encode($artistDB->getArtistName(75));
-// echo json_encode($artistDB->getAll());
+//  echo json_encode($artistDB->getArtistName(75));
+//  echo json_encode($artistDB->getAll());
+
+$genreDB = new GenreDb($conn); 
+//  echo json_encode($genreDB->getGenreName(25));
+//  echo json_encode($genreDB->getAll());
+
+$typeDB = new TypeDb($conn);
+// echo json_encode($typeDB->getType(75));
+// echo json_encode($typeDB->getAll());
+
 
 
 $title = $songData["title"];
+
 $artistID = $songData["artist_id"];
 $artist = $artistDB->getArtistName($artistID);
-$artistType = "Artist Type";
-$genre = "Genre";
+
+
+// $artistType = "artistType";
+$artistType = $songData["artist_id"];
+$artistType = $typeDB -> getType($artistType); 
+
+
+
+// $genre = "Genre";
+$genre = $songData["genre_id"];
+ $genre = $genreDB -> getGenreName($genre); 
+
+
+ 
 $year = $songData["year"];
 $seconds = $songData["duration"];
 $minutes = floor($seconds/60);
@@ -62,18 +84,27 @@ function generateHeader()
         <title>COMP 3512 Assign1</title>
         <link rel="stylesheet" href="css/style.css">
       </head>
+
+      <header> COMP 3512 Assign1
+          <h4>Joel Conley, Harshad Krishnaraj</h4>
+      </header>
       
-    <!-- TODO: Harshad - make the header element into a function for use on each 
-    page, maybe add some styling as well -->
-	<header>COMP 3512 Assign1
-        <h4>Joel Conley, Harshad Krishnaraj</h4>
-    </header>
+    
 <?php
     }
+    function generateFooter()
+    {
+      ?>
+      <!-- TODO: Harshad - make the header element into a function for use on each 
+       page, maybe add some styling as well -->
+    <header> COMP 3512 Assign1
+          <h4>Joel Conley, Harshad Krishnaraj</h4>
+      </header>
 
-
-  
-  
+      <?php   
+    }
 
 ?>
+  
+  
    

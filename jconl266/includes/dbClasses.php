@@ -85,4 +85,64 @@ class ArtistDB {
       return $artistArray[0]["artist_name"]; 
      }
 }
+class  GenreDb
+{
+   private static $baseSQL = "SELECT * FROM genres"; 
+   
+   public function __construct($connection) { 
+       $this->pdo = $connection; 
+   } 
+
+   public function getAll() { 
+      $sql = self::$baseSQL; 
+      $statement = DatabaseHelper::runQuery($this->pdo, $sql, null); 
+      return $statement->fetchAll(); 
+  }
+  
+
+
+
+   public function getGenreName($genreID) { 
+      $sql = self::$baseSQL . " WHERE GENRE_ID=?";
+      $statement = DatabaseHelper::runQuery($this->pdo, $sql, Array($genreID)); 
+      $genreArray = $statement->fetchAll();
+      //   echo json_encode($genreArray);
+      return $genreArray[0]["genre_name"]; 
+     }
+
+}
+
+class TypeDb
+{
+   private static $baseSQL = "SELECT * FROM artists"; 
+   
+   public function __construct($connection) { 
+       $this->pdo = $connection; 
+   } 
+
+   public function getAll() { 
+      $sql = self::$baseSQL; 
+      $statement = DatabaseHelper::runQuery($this->pdo, $sql, null); 
+      return $statement->fetchAll(); 
+  }
+
+
+  //   public function getArtistName($artistID) { 
+//    $sql = self::$baseSQL . " WHERE Artist_ID=?";
+//    $statement = DatabaseHelper::runQuery($this->pdo, $sql, Array($artistID)); 
+//    $artistArray = $statement->fetchAll();
+//    // echo json_encode($artistArray);
+//    return $artistArray[0]["artist_name"]; 
+  
+   public function getType($typeName) { 
+      $sql = self::$baseSQL . " WHERE ARTIST_ID=?";
+      $statement = DatabaseHelper::runQuery($this->pdo, $sql, Array($typeName)); 
+      $genreTypeArray = $statement->fetchAll();
+      //  echo json_encode($genreNameArray);
+      return $genreTypeArray[0]["artist_type_id"]; 
+     }
+
+}
+
+
  ?>
