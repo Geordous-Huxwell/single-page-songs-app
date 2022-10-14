@@ -1,15 +1,13 @@
 <?php
 require_once './main.php';
 
-
-
 ?>
 
 <html> 
   
   <?php
-generateHeader();  
-?> 
+generateHeader();
+?>
 
     <article>
         <!-- <h2>Song Info</h2> -->

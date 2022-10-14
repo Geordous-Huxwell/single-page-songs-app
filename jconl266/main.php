@@ -5,8 +5,14 @@ require_once './includes/dbClasses.php';
 $conn = DatabaseHelper::createConnection(array(DBCONNSTRING, DBUSER, DBPASS));
 $songDB = new SongDB($conn);
 // echo json_encode($songDB->getAll());
-$randomSongID = rand(1001, 1318);
-$songID = $randomSongID;
+
+if (isset($_GET['title']) && !empty($_GET['title'])){
+  // echo json_encode($_GET);
+  $songID = $songDB->getSongID($_GET['title']);
+}else {
+  $songID = rand(1001, 1318);
+}
+
 $songData = $songDB->getSongData($songID)[0];
 // echo json_encode($songData);
 
@@ -14,7 +20,7 @@ $artistDB = new ArtistDB($conn);
 //  echo json_encode($artistDB->getArtistName(75));
 //  echo json_encode($artistDB->getAll());
 
-$genreDB = new GenreDb($conn); 
+$genreDB = new GenreDb($conn);
 //  echo json_encode($genreDB->getGenreName(25));
 //  echo json_encode($genreDB->getAll());
 
@@ -23,23 +29,13 @@ $typeDB = new TypeDb($conn);
 // echo json_encode($typeDB->getAll());
 
 
-
 $title = $songData["title"];
-
 $artistID = $songData["artist_id"];
 $artist = $artistDB->getArtistName($artistID);
-
-
-// $artistType = "artistType";
 $artistType = $songData["artist_id"];
-$artistType = $typeDB -> getType($artistType); 
-
-
-
-// $genre = "Genre";
+$artistType = $typeDB -> getType($artistType);
 $genre = $songData["genre_id"];
- $genre = $genreDB -> getGenreName($genre); 
-
+$genre = $genreDB -> getGenreName($genre);
 
  
 $year = $songData["year"];
@@ -57,12 +53,12 @@ $speechiness = $songData["speechiness"];
 $popularity = $songData["popularity"];
 $metrics = $songDB->getSongMetrics($songID)[0];
 
-// echo json_encode($metrics);
+
 function generateMetrics($metrics) {
   foreach($metrics as $metric=>$value){
 ?>
   <div class="circle">
-    <div class="datatype"><?=$metric?></div> 
+    <div class="datatype"><?=$metric?></div>
     <div class="value"><?=$value?></div>
     <!-- <progress class="value" value='<?=$value?>' max="100"><?=$value?></progress> -->
   </div>
@@ -95,13 +91,13 @@ function generateHeader()
     function generateFooter()
     {
       ?>
-      <!-- TODO: Harshad - make the header element into a function for use on each 
+      <!-- TODO: Harshad - make the header element into a function for use on each
        page, maybe add some styling as well -->
     <header> COMP 3512 Assign1
           <h4>Joel Conley, Harshad Krishnaraj</h4>
       </header>
 
-      <?php   
+      <?php
     }
 
 function generateArtists($artistData){
@@ -109,9 +105,21 @@ function generateArtists($artistData){
   foreach ($artistData as $artist){
     echo "<option value='".$artist['artist_name']."'>";
   }
-  
 }
+ 
+function generateGenres($genreData){
   
+  foreach ($genreData as $genre){
+    echo "<option value='".$genre['genre_name']."'>";
+  }
+}
+
+function generateTitles($songData){
+  
+  foreach ($songData as $song){
+    echo "<option value='".$song['title']."'>";
+  }
+}
   
   
    

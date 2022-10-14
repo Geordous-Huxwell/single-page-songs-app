@@ -35,32 +35,42 @@ public static function runQuery($connection, $sql, $parameters) {
        if (!$statement) throw new PDOException; 
    } 
 return $statement; 
-} 
-} 
+}
+}
 
-class SongDB { 
-   private static $baseSQL = "SELECT * FROM songs"; 
+class SongDB {
+   private static $baseSQL = "SELECT * FROM songs";
    
-   public function __construct($connection) { 
-       $this->pdo = $connection; 
-   } 
+   public function __construct($connection) {
+       $this->pdo = $connection;
+   }
 
-   public function getAll() { 
-      $sql = self::$baseSQL; 
-      $statement = DatabaseHelper::runQuery($this->pdo, $sql, null); 
-      return $statement->fetchAll(); 
+   public function getAll() {
+      $sql = self::$baseSQL;
+      $statement = DatabaseHelper::runQuery($this->pdo, $sql, null);
+      return $statement->fetchAll();
   }
 
-   public function getSongData($songID) { 
-      $sql = self::$baseSQL . " WHERE song_id=?"; 
-      $statement = DatabaseHelper::runQuery($this->pdo, $sql, Array($songID)); 
-      return $statement->fetchAll(); 
+   public function getSongData($songID) {
+      $sql = self::$baseSQL . " WHERE song_id=?";
+      $statement = DatabaseHelper::runQuery($this->pdo, $sql, Array($songID));
+      return $statement->fetchAll();
+   }
+
+   public function getSongID($songTitle) {
+      $sql = self::$baseSQL . " WHERE title=?";
+      $statement = DatabaseHelper::runQuery($this->pdo, $sql, Array($songTitle));
+      $songArray = $statement->fetchAll();
+      return $songArray[0]['song_id'];
    }
 
    public function getSongMetrics($songID) {
-      $sql = "SELECT bpm, energy, danceability as 'dance', liveness as 'live', valence, acousticness as 'acoustic', speechiness as 'speech', popularity FROM songs WHERE song_id=?"; 
-      $statement = DatabaseHelper::runQuery($this->pdo, $sql, Array($songID)); 
-      return $statement->fetchAll();       
+      $sql = "SELECT bpm, energy, danceability as 'dance', liveness as 'live',
+      valence, acousticness as 'acoustic', speechiness as 'speech', popularity
+      FROM songs
+      WHERE song_id=?";
+      $statement = DatabaseHelper::runQuery($this->pdo, $sql, Array($songID));
+      return $statement->fetchAll();
    }
 }
 
@@ -85,61 +95,62 @@ class ArtistDB {
       return $artistArray[0]["artist_name"];
      }
 }
-class  GenreDb
-{
-   private static $baseSQL = "SELECT * FROM genres"; 
-   
-   public function __construct($connection) { 
-       $this->pdo = $connection; 
-   } 
 
-   public function getAll() { 
-      $sql = self::$baseSQL; 
-      $statement = DatabaseHelper::runQuery($this->pdo, $sql, null); 
-      return $statement->fetchAll(); 
+class GenreDb
+{
+   private static $baseSQL = "SELECT * FROM genres";
+   
+   public function __construct($connection) {
+       $this->pdo = $connection;
+   }
+
+   public function getAll() {
+      $sql = self::$baseSQL;
+      $statement = DatabaseHelper::runQuery($this->pdo, $sql, null);
+      return $statement->fetchAll();
   }
   
 
 
 
-   public function getGenreName($genreID) { 
+   public function getGenreName($genreID) {
       $sql = self::$baseSQL . " WHERE GENRE_ID=?";
-      $statement = DatabaseHelper::runQuery($this->pdo, $sql, Array($genreID)); 
+      $statement = DatabaseHelper::runQuery($this->pdo, $sql, Array($genreID));
       $genreArray = $statement->fetchAll();
       //   echo json_encode($genreArray);
-      return $genreArray[0]["genre_name"]; 
+      return $genreArray[0]["genre_name"];
      }
 
 }
 
 class TypeDb
 {
-   private static $baseSQL = "SELECT * FROM artists"; 
+   private static $baseSQL = "SELECT * FROM artists";
    
-   public function __construct($connection) { 
-       $this->pdo = $connection; 
+   public function __construct($connection) {
+       $this->pdo = $connection;
    } 
 
-   public function getAll() { 
-      $sql = self::$baseSQL; 
-      $statement = DatabaseHelper::runQuery($this->pdo, $sql, null); 
-      return $statement->fetchAll(); 
+   public function getAll() {
+      $sql = self::$baseSQL;
+      $statement = DatabaseHelper::runQuery($this->pdo, $sql, null);
+      return $statement->fetchAll();
   }
 
 
-  //   public function getArtistName($artistID) { 
+  //   public function getArtistName($artistID) {
 //    $sql = self::$baseSQL . " WHERE Artist_ID=?";
-//    $statement = DatabaseHelper::runQuery($this->pdo, $sql, Array($artistID)); 
+//    $statement = DatabaseHelper::runQuery($this->pdo, $sql, Array($artistID));
 //    $artistArray = $statement->fetchAll();
 //    // echo json_encode($artistArray);
-//    return $artistArray[0]["artist_name"]; 
+//    return $artistArray[0]["artist_name"];
   
-   public function getType($typeName) { 
+   public function getType($typeName) {
       $sql = self::$baseSQL . " WHERE ARTIST_ID=?";
-      $statement = DatabaseHelper::runQuery($this->pdo, $sql, Array($typeName)); 
+      $statement = DatabaseHelper::runQuery($this->pdo, $sql, Array($typeName));
       $genreTypeArray = $statement->fetchAll();
       //  echo json_encode($genreNameArray);
-      return $genreTypeArray[0]["artist_type_id"]; 
+      return $genreTypeArray[0]["artist_type_id"];
      }
 
 }
