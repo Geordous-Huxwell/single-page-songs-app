@@ -41,10 +41,22 @@ function generateSongRows($songsArray, $artistDB, $genreDB){
         <?php
         if (isset($_GET['title']) && !empty($_GET['title'])){
             generateSongRows($songDB->filterSongs($_GET['title']), $artistDB, $genreDB);
-        } elseif (isset($_GET['artist']) && !empty($_GET['artist'])){
+        }
+        elseif (isset($_GET['artist']) && !empty($_GET['artist'])){
             $artistID = $artistDB->getArtistID($_GET['artist']);
-            echo $artistID;
             generateSongRows($songDB->getAllByArtist($artistID), $artistDB, $genreDB);
+        }
+        elseif (isset($_GET['year']) && !empty($_GET['year'])){
+        
+            if ($_GET['yearOperator'] == 'before'){
+                generateSongRows($songDB->getAllBeforeYear($_GET['year']), $artistDB, $genreDB);
+            }
+            elseif ($_GET['yearOperator'] == 'after'){
+                generateSongRows($songDB->getAllAfterYear($_GET['year']), $artistDB, $genreDB);
+            }
+            else {
+                generateSongRows($songDB->getAllByYear($_GET['year']), $artistDB, $genreDB);
+            }
         }
         else {
             generateSongRows($songDB->getAll(), $artistDB, $genreDB);

@@ -87,6 +87,24 @@ class SongDB {
       return $statement->fetchAll();
    }
 
+   public function getAllByYear($year) {
+      $sql = self::$baseSQL . " WHERE year=?";
+      $statement = DatabaseHelper::runQuery($this->pdo, $sql, Array($year));
+      return $statement->fetchAll();
+   }
+
+   public function getAllBeforeYear($year) {
+      $sql = self::$baseSQL . " WHERE year<=?";
+      $statement = DatabaseHelper::runQuery($this->pdo, $sql, Array($year));
+      return $statement->fetchAll();
+   }
+   
+   public function getAllAfterYear($year) {
+      $sql = self::$baseSQL . " WHERE year>=?";
+      $statement = DatabaseHelper::runQuery($this->pdo, $sql, Array($year));
+      return $statement->fetchAll();
+   }
+
 }
 
 class ArtistDB {

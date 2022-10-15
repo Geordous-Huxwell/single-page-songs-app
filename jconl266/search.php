@@ -32,22 +32,23 @@ require_once './main.php';
                 <div class="column">
                     <label for="year">Year</label>
                     <select name="year" id="year">
+                        <option value="none" selected disabled hidden></option>
                         <option value="2016">2016</option>
                         <option value="2017">2017</option>
                         <option value="2018">2018</option>
                         <option value="2019">2019</option>
                     </select>
-                    <input type="radio" id="before" name="yearOperator">
+                    <input type="radio" id="before" name="yearOperator" value="before">
                     <label for="before">Before</label>
-                    <input type="radio" id="after" name="yearOperator">
+                    <input type="radio" id="after" name="yearOperator" value="after">
                     <label for="after">After</label>
                 </div>
                 <div class="column">
                     <label for="popularity">Popularity</label>
-                    <input type="range" id="popularity" min="1" max="100" value="50">
-                    <input type="radio" id="lower" name="popOperator">
+                    <input type="range" id="popularity" name="popularity" min="1" max="100" value="0">
+                    <input type="radio" id="lower" name="popOperator" value="lower">
                     <label for="before">Lower</label>
-                    <input type="radio" id="greater" name="popOperator">
+                    <input type="radio" id="greater" name="popOperator" value="greater">
                     <label for="after">Greater</label>
                 </div>
                 <div class="column">
