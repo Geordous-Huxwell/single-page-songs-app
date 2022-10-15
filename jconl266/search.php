@@ -6,7 +6,7 @@ require_once './main.php';
     <header>inject header here</header>
         <article>
             <h2 class="search-box">Song Search</h2>
-            <form action="./index.php" method="get">
+            <form action="./results.php" method="get">
             <div class=row>
                 <div class="column">
                     <label for="title">Song Title</label>

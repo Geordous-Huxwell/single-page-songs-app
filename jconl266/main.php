@@ -6,12 +6,12 @@ $conn = DatabaseHelper::createConnection(array(DBCONNSTRING, DBUSER, DBPASS));
 $songDB = new SongDB($conn);
 // echo json_encode($songDB->getAll());
 
-if (isset($_GET['title']) && !empty($_GET['title'])){
+// if (isset($_GET['title']) && !empty($_GET['title'])){
   // echo json_encode($_GET);
-  $songID = $songDB->getSongID($_GET['title']);
-}else {
+  // $songID = $songDB->getSongID($_GET['title']);
+// }else {
   $songID = rand(1001, 1318);
-}
+// }
 
 $songData = $songDB->getSongData($songID)[0];
 // echo json_encode($songData);
