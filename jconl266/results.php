@@ -78,7 +78,7 @@ th {
     max-width: 300px;
 }
 
-/* striped table from https://www.w3schools.com/howto/howto_css_table_zebra.asp */
+/* striped table css from https://www.w3schools.com/howto/howto_css_table_zebra.asp */
 tr:nth-child(odd) {
   background-color: #f2f2f2;
 }
@@ -90,10 +90,16 @@ tbody {
     /* width:100%; */
 }
 
-thead tr {
-    /* display: block; */
-    /* width: 1000px; */
-    /* border:1px red solid; */
+/* scrollable table css from
+https://www.w3docs.com/snippets/html/how-to-create-a-table-with-a-fixed-header-and-scrollable-body.html */
+.scroll-table {
+    overflow-y: auto;
+    height: 300px;
+}
+
+thead th {
+    position: sticky;
+    top: 0;
 }
 
 button {
@@ -120,7 +126,7 @@ form {
     <article>
         <h1>Songs</h1>
         <h4 class="filter">Results filtered by <?=$filter?>: <?=$filterVal?> <form><button fromaction="./results.php">Clear</button></form></h4>
-        <div style="overflow: auto">
+        <div class="scroll-table">
         <table>
             <thead>
                 
