@@ -4,11 +4,20 @@ require_once './main.php';
 // grab filters
 $filter = "none";
 $filterVal= "all";
+
 foreach ($_GET as $key=>$value){
     if ($value){
         $filter = $key;
         $filterVal = $value;
     }
+}
+
+if ($filter == "yearOperator"){
+    $filter = "year";
+    $filterVal .= " " . $_GET["year"] . " inclusive";
+} elseif ($filter == "popOperator"){
+    $filter = "popularity";
+    $filterVal .= " than " . $_GET["popularity"];
 }
 
 function generateSongRows($songsArray, $artistDB, $genreDB){
@@ -167,7 +176,7 @@ form {
                 }
             }
             // search by popularity
-            elseif (isset($_GET['popularity']) && ($_GET['popularity'] != 0)){
+            elseif (isset($_GET['popularity']) && ($_GET['popularity'] > 0)){
             
                 if (isset($_GET['popOperator']) && ($_GET['popOperator'] == 'lower')){
                     generateSongRows($songDB->getAllLowerPop($_GET['popularity']), $artistDB, $genreDB);
