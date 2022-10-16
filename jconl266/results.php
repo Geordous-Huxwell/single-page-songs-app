@@ -77,6 +77,17 @@ th {
 
 button {
     margin-left: 15px;
+    color: white;
+    background-color: cadetblue;
+    padding: 5px 10px;
+    border: 1px cadetblue solid;
+    border-radius: 2px;
+    box-shadow: 2px 2px black;
+}
+
+button:active {
+    transform: translate(1px, 1px);
+    box-shadow: none;
 }
 
 form {
