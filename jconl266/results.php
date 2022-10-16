@@ -39,13 +39,18 @@ function generateSongRows($songsArray, $artistDB, $genreDB){
         <th><button>Add to Favourites</button></th>
         <th><button>Details</button></th>
         <?php
+        // search by title
         if (isset($_GET['title']) && !empty($_GET['title'])){
             generateSongRows($songDB->filterSongs($_GET['title']), $artistDB, $genreDB);
         }
+        // search by artist
         elseif (isset($_GET['artist']) && !empty($_GET['artist'])){
             $artistID = $artistDB->getArtistID($_GET['artist']);
             generateSongRows($songDB->getAllByArtist($artistID), $artistDB, $genreDB);
         }
+        // TODO: Harshad - implement search by genre based on how search by artist works
+        
+        // search by year
         elseif (isset($_GET['year']) && !empty($_GET['year'])){
         
             if ($_GET['yearOperator'] == 'before'){
@@ -58,6 +63,7 @@ function generateSongRows($songsArray, $artistDB, $genreDB){
                 generateSongRows($songDB->getAllByYear($_GET['year']), $artistDB, $genreDB);
             }
         }
+        // search by popularity
         elseif (isset($_GET['popularity']) && ($_GET['popularity'] != 0)){
         
             if ($_GET['popOperator'] == 'lower'){
