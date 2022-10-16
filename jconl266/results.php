@@ -52,6 +52,7 @@ table {
     border: 5px rgb(115, 63, 11) solid;
     font-family: monospace;
     font-size: 14px;
+    /* overflow-y: auto; */
 }
 
 td {
@@ -59,7 +60,9 @@ td {
 }
 
 th {
+    /* width: 100px; */
     padding: 0px 4px;
+    background-color: rgb(233, 217, 197);
 }
 
 td,
@@ -73,6 +76,24 @@ th {
 
 .song-title {
     max-width: 300px;
+}
+
+/* striped table from https://www.w3schools.com/howto/howto_css_table_zebra.asp */
+tr:nth-child(odd) {
+  background-color: #f2f2f2;
+}
+
+tbody {
+    /* display: block; */
+    /* overflow:auto; */
+    /* height:300px; */
+    /* width:100%; */
+}
+
+thead tr {
+    /* display: block; */
+    /* width: 1000px; */
+    /* border:1px red solid; */
 }
 
 button {
@@ -99,9 +120,10 @@ form {
     <article>
         <h1>Songs</h1>
         <h4 class="filter">Results filtered by <?=$filter?>: <?=$filterVal?> <form><button fromaction="./results.php">Clear</button></form></h4>
+        <div style="overflow: auto">
         <table>
             <thead>
-                <tr>
+                
                     <th>Title</th>
                     <th>Artist</th>
                     <th>Year</th>
@@ -110,7 +132,7 @@ form {
                     <th>Song ID</th>
                     <th style="max-width: 75px">Add to Favourites</th>
                     <th>Details</th>
-                </tr>
+                
             </thead>
             <tbody>
             <?php
@@ -157,6 +179,7 @@ form {
             ?>
             </tbody>
         </table>
+        </div>
         </article>
     <?=generateFooter();?>
 </body>
