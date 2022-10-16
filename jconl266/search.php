@@ -3,7 +3,7 @@ require_once './main.php';
 // echo json_encode($artistDB);
 ?>
 <body>
-    <header>inject header here</header>
+    <?=generateHeader()?>
         <article>
             <h2 class="search-box">Song Search</h2>
             <form action="./results.php" method="get">
@@ -57,5 +57,5 @@ require_once './main.php';
             </div>
             </form>
         </article>
-    <footer>inject footer here</footer>
+        <?=generateFooter()?>
 </body>

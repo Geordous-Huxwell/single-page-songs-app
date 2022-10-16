@@ -4,30 +4,19 @@ require_once './includes/dbClasses.php';
 
 $conn = DatabaseHelper::createConnection(array(DBCONNSTRING, DBUSER, DBPASS));
 $songDB = new SongDB($conn);
-// echo json_encode($songDB->getAll());
+$artistDB = new ArtistDB($conn);
+$genreDB = new GenreDb($conn);
+$typeDB = new TypeDb($conn);
 
-// if (isset($_GET['title']) && !empty($_GET['title'])){
-  // echo json_encode($_GET);
-  // $songID = $songDB->getSongID($_GET['title']);
-// }else {
+if (isset($_GET['title']) && !empty($_GET['title'])){
+  $songID = $songDB->getSongID($_GET['title']);
+}
+else {
   $songID = rand(1001, 1318);
-// }
+  }
+
 
 $songData = $songDB->getSongData($songID)[0];
-// echo json_encode($songData);
-
-$artistDB = new ArtistDB($conn);
-//  echo json_encode($artistDB->getArtistName(75));
-//  echo json_encode($artistDB->getAll());
-
-$genreDB = new GenreDb($conn);
-//  echo json_encode($genreDB->getGenreName(25));
-//  echo json_encode($genreDB->getAll());
-
-$typeDB = new TypeDb($conn);
-// echo json_encode($typeDB->getType(75));
-// echo json_encode($typeDB->getAll());
-
 
 $title = $songData["title"];
 $artistID = $songData["artist_id"];
@@ -37,7 +26,7 @@ $artistType = $typeDB -> getType($artistType);
 $genre = $songData["genre_id"];
 $genre = $genreDB -> getGenreName($genre);
 
- 
+
 $year = $songData["year"];
 $seconds = $songData["duration"];
 $minutes = floor($seconds/60);
@@ -124,16 +113,16 @@ function generateHeader()
     color: white;
   }
 
-  </style> 
+  </style>
 
       <div class="topnav">
-        <a class="home" href="https://www.w3schools.com/howto/howto_js_topnav.asp">Home</a>
-        <a class="sPage" href="news">Songs</a>
-      <a class="search"   href="contact">Search</a>
-      <a class="result" href="about">Results </a>
-      <a class="fav" href="about"> Favorites</a>
-      <br>
-      <br>
+        <a class="home" href="./index.php">Random</a>
+        <a class="sPage" href="./results.php">Songs</a>
+        <a class="search" href="./search.php">Search</a>
+        <a class="result" href="./rankings.php">Rankings</a>
+        <a class="fav" href="./favorites.php">Favourites</a>
+        <br>
+        <br>
           
 <?php
     }

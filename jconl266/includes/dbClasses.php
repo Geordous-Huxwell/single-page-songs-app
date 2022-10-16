@@ -62,7 +62,12 @@ class SongDB {
       $sql = self::$baseSQL . " WHERE title=?";
       $statement = DatabaseHelper::runQuery($this->pdo, $sql, Array($songTitle));
       $songArray = $statement->fetchAll();
-      return $songArray[0]['song_id'];
+      if ($songArray){
+         return $songArray[0]['song_id'];
+      }
+      else {
+         return rand(1001, 1318);
+      }
    }
 
    public function getSongMetrics($songID) {

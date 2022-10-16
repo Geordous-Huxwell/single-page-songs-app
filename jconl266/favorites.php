@@ -1,5 +1,5 @@
 <?php  
-include './main.php';
+include_once './main.php';
 
 // ensure sessions works on this page
 session_start();
