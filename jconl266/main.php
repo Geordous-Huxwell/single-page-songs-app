@@ -85,27 +85,20 @@ function generateHeader()
           <h4>Joel Conley, Harshad Krishnaraj</h4>
       </header>
 
-      <style> 
-      
+      <style>
+      /* Some navbar css from https://www.w3schools.com/howto/howto_js_topnav.asp */
       .topnav {
-
         display:inline;
-        margin: 50px; 
+        margin: 50px;
         padding-left: 25%;
-    padding-right: 25%;
-    
-    
-    
-        
+        padding-right: 25%;
     /* overflow: hidden; */
   }
   
   /* Style the links inside the navigation bar */
   .topnav a.home, a.sPage, a.search, a.result, a.fav
   {
-
-    
-    display: inline-block; 
+    display: inline-block;
     align-items: center;
     justify-content: center;
     border-radius: 200px;
@@ -119,7 +112,6 @@ function generateHeader()
   /* Change the color of links on hover */
   .topnav a.home:hover, a.sPage:hover, a.search:hover, a.result:hover, a.fav:hover
   {
-
     background-color: #ddd;
     color: black;
   }
@@ -127,14 +119,11 @@ function generateHeader()
   /* Add a color to the active/current link */
   .topnav a.home, a.sPage, a.search, a.result, a.fav
   {
-  
-    /* background-color: rgb(115, 63, 11); */
+   /* background-color: rgb(115, 63, 11); */
     background-color: rgb(203, 70, 70);
     color: white;
   }
 
-  
-  
   </style> 
 
       <div class="topnav">
@@ -145,8 +134,7 @@ function generateHeader()
       <a class="fav" href="about"> Favorites</a>
       <br>
       <br>
-      
-    
+          
 <?php
     }
     function generateFooter()
@@ -171,14 +159,14 @@ function generateHeader()
 function generateArtists($artistData){
   
   foreach ($artistData as $artist){
-    echo "<option value='".$artist['artist_name']."'>";
+    echo "<option value='".$artist['artist_name']."'>".$artist['artist_name']."</option>";
   }
 }
  
 function generateGenres($genreData){
   
   foreach ($genreData as $genre){
-    echo "<option value='".$genre['genre_name']."'>";
+    echo "<option value='".$genre['genre_name']."'>".$genre['genre_name']."</option>";
   }
 }
 

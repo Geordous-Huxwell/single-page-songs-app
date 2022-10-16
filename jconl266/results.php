@@ -58,6 +58,18 @@ function generateSongRows($songsArray, $artistDB, $genreDB){
                 generateSongRows($songDB->getAllByYear($_GET['year']), $artistDB, $genreDB);
             }
         }
+        elseif (isset($_GET['popularity']) && ($_GET['popularity'] != 0)){
+        
+            if ($_GET['popOperator'] == 'lower'){
+                generateSongRows($songDB->getAllLowerPop($_GET['popularity']), $artistDB, $genreDB);
+            }
+            elseif ($_GET['popOperator'] == 'greater'){
+                generateSongRows($songDB->getAllGreaterPop($_GET['popularity']), $artistDB, $genreDB);
+            }
+            else {
+                generateSongRows($songDB->getAllByPop($_GET['popularity']), $artistDB, $genreDB);
+            }
+        }
         else {
             generateSongRows($songDB->getAll(), $artistDB, $genreDB);
         }

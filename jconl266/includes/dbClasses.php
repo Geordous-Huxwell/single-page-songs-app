@@ -105,6 +105,24 @@ class SongDB {
       return $statement->fetchAll();
    }
 
+   public function getAllByPop($pop) {
+      $sql = self::$baseSQL . " WHERE popularity=?";
+      $statement = DatabaseHelper::runQuery($this->pdo, $sql, Array($pop));
+      return $statement->fetchAll();
+   }
+
+   public function getAllLowerPop($pop) {
+      $sql = self::$baseSQL . " WHERE popularity<=?";
+      $statement = DatabaseHelper::runQuery($this->pdo, $sql, Array($pop));
+      return $statement->fetchAll();
+   }
+   
+   public function getAllGreaterPop($pop) {
+      $sql = self::$baseSQL . " WHERE popularity>=?";
+      $statement = DatabaseHelper::runQuery($this->pdo, $sql, Array($pop));
+      return $statement->fetchAll();
+   }
+
 }
 
 class ArtistDB {

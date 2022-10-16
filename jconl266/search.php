@@ -17,17 +17,17 @@ require_once './main.php';
                 </div>
                 <div class="column">
                     <label for="artist">Artist</label>
-                    <input list="artists" name="artist" id="artist">
-                    <datalist id="artists">
-                    <?php generateArtists($artistDB->getAll()); ?>
-                    </datalist>
+                    <select name="artist" id="artists">
+                        <option value="none" selected disabled hidden></option>
+                        <?php generateArtists($artistDB->getAll()); ?>
+                    </select>
                 </div>
                 <div class="column">
                     <label for="genre">Genre</label>
-                    <input list="genres" name="genre" id="genre">
-                    <datalist id="genres">
-                    <?php generateGenres($genreDB->getAll()); ?>
-                    </datalist>
+                    <select name="genre" id="genres">
+                        <option value="none" selected disabled hidden></option>
+                        <?php generateGenres($genreDB->getAll()); ?>
+                    </select>
                 </div>
                 <div class="column">
                     <label for="year">Year</label>
@@ -41,11 +41,11 @@ require_once './main.php';
                     <input type="radio" id="before" name="yearOperator" value="before">
                     <label for="before">Before</label>
                     <input type="radio" id="after" name="yearOperator" value="after">
-                    <label for="after">After</label>
+                    <label for="after">After</label> <span>(inclusive of year selected)</span>
                 </div>
                 <div class="column">
                     <label for="popularity">Popularity</label>
-                    <input type="range" id="popularity" name="popularity" min="1" max="100" value="0">
+                    <input type="range" id="popularity" name="popularity" min="0" max="100" value="0">
                     <input type="radio" id="lower" name="popOperator" value="lower">
                     <label for="before">Lower</label>
                     <input type="radio" id="greater" name="popOperator" value="greater">
