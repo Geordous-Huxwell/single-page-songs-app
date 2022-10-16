@@ -24,7 +24,7 @@ function generateSongRows($songsArray, $artistDB, $genreDB){
             <td class="center-data"><?=$song["year"]?></td>
             <td class="center-data"><?=$genre?></td>
             <td class="center-data"><?=$song["popularity"]?></td>
-            <td class="center-data"><?=$song["song_id"]?></td>
+            <!-- <td class="center-data"><?=$song["song_id"]?></td> -->
             <td class="center-data"><a href="./addToFavorites.php?song_id=<?=$song["song_id"]?>">Add</a></td>
             <td class="center-data"><a href="./index.php?title=<?=$song["title"]?>">View</a></td>
         </tr>
@@ -94,7 +94,7 @@ tbody {
 https://www.w3docs.com/snippets/html/how-to-create-a-table-with-a-fixed-header-and-scrollable-body.html */
 .scroll-table {
     overflow-y: auto;
-    height: 300px;
+    height: 400px;
 }
 
 thead th {
@@ -135,7 +135,7 @@ form {
                     <th>Year</th>
                     <th>Genre</th>
                     <th>Popularity</th>
-                    <th>Song ID</th>
+                    <!-- <th>Song ID</th> -->
                     <th style="max-width: 75px">Add to Favourites</th>
                     <th>Details</th>
                 
