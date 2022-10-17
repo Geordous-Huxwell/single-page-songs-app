@@ -75,13 +75,14 @@ function generateHeader()
       </header>
 
       <style>
-      /* Some navbar css from https://www.w3schools.com/howto/howto_js_topnav.asp */
-      .topnav {
-        display:inline;
-        margin: 50px;
-        padding-left: 25%;
-        padding-right: 25%;
-    /* overflow: hidden; */
+  /* Some navbar css from https://www.w3schools.com/howto/howto_js_topnav.asp */
+  .topnav {
+    display:inline;
+    margin: auto;
+    padding-left: 25%;
+    padding-right: 25%;
+    font-family: helvetica;
+    font-weight: bold;
   }
   
   /* Style the links inside the navigation bar */
@@ -96,6 +97,10 @@ function generateHeader()
     padding: 20px 24px;
     text-decoration: none;
     font-size: 17px;
+    border: 2px black solid;
+    /* text stroke from https://css-tricks.com/adding-stroke-to-web-text/ */
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: black;
   }
   
   /* Change the color of links on hover */
