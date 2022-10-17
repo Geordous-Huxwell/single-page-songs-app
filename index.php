@@ -1,3 +1,3 @@
 <?php
-echo "app working";
+require_once "./jconl266/index.php"
 ?>
