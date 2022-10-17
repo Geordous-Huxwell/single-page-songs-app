@@ -123,6 +123,26 @@ function generateHeader()
         <a class="fav" href="./favorites.php">Favourites</a>
         <br>
         <br>
+
+
+
+  <?php
+    }
+    
+
+
+    function indexList()
+    {
+        echo "<ul>"; 
+
+        echo "<li>"; 
+        
+
+    }
+
+    
+  {
+  ?>
           
 <?php
     }
