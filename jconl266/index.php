@@ -16,6 +16,7 @@ generateHeader();
             <span class="title"><?=$title?></span>
             <span class="artist"><?=$artist?></span>
           </summary>
+          <h3>
           <ul>
             <!-- TODO: Harshad - make this list into a function and style the list items-->
             <li>Year: <?=$year?></li>
@@ -23,6 +24,7 @@ generateHeader();
             <li>Genre: <?=$genre?></li>
             <li>Type: <?=$artistType?></li>
           </ul>
+          </h3>
           
         </details>
         <div class="grid">

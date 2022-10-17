@@ -41,7 +41,7 @@ summary:active {
 }
 
 ul {
-    border: yellow 1px solid;
+    /* border: yellow 1px solid; */
     display: flex;
     justify-content: center;
     list-style: none;
@@ -49,9 +49,9 @@ ul {
 
 li {
     margin: auto;
-    border: green 1px solid;
-    /* background-color: olive; */
-    /* border-radius: 100px; */
+    /* border: green 1px solid; */
+    background-color: olive;
+    border-radius: 20px;
 }
 
 .title {
@@ -120,7 +120,7 @@ li {
     /* display: flex; */
     text-align: center;
     font-weight: bolder;
-    color: antiquewhite;
+    color: white;
     font-size: 11px;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
@@ -131,7 +131,7 @@ li {
     font-size: 25px;
     width: 80px;
     border-radius: 100px;
-    background-color: antiquewhite;
+    background-color: white;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
