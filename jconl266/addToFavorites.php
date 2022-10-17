@@ -1,5 +1,5 @@
 <?php
-require_once "./main.php";
+require_once "./jconl266/main.php";
 // ensure sessions works on this page
 session_start();
 

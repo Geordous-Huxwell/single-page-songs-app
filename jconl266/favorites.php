@@ -1,5 +1,5 @@
 <?php  
-include_once './main.php';
+include_once './jconl266/main.php';
 
 // ensure sessions works on this page
 session_start();
