@@ -1,5 +1,5 @@
 <?php
-require_once './jconl266/main.php';
+require_once './main.php';
 // echo json_encode($artistDB);
 ?>
 <style>
