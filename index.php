@@ -17,6 +17,7 @@ generateHeader();
             <span class="artist"><?=$artist?></span>
           </summary>
           <h3>
+            
           <ul>
             <!-- TODO: Harshad - make this list into a function and style the list items-->
             <li>Year: <?=$year?></li>

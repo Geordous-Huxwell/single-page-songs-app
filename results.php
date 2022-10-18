@@ -162,6 +162,15 @@ form {
             }
             // TODO: Harshad - implement search by genre based on how search by artist works
 
+            // search by genre
+            elseif (isset($_GET['genre']) && !empty($_GET['genre']))
+            {
+                $genreID = $genreDB -> getGenreID($_GET['genre']); 
+                generateSongRows($songDB->getAllByGenre($genreID), $artistDB, $genreDB);
+                
+
+            }
+
             // search by year
             elseif (isset($_GET['year']) && !empty($_GET['year'])){
             

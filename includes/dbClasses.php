@@ -92,6 +92,13 @@ class SongDB {
       return $statement->fetchAll();
    }
 
+   public function getAllByGenre($genreID)
+   {
+      $sql = self::$baseSQL . " WHERE genre_id=?";
+      $statement = DatabaseHelper::runQuery($this->pdo, $sql, Array($genreID));
+      return $statement->fetchAll();
+   }
+
    public function getAllByYear($year) {
       $sql = self::$baseSQL . " WHERE year=?";
       $statement = DatabaseHelper::runQuery($this->pdo, $sql, Array($year));
@@ -178,6 +185,12 @@ class GenreDb
       $genreArray = $statement->fetchAll();
       //   echo json_encode($genreArray);
       return $genreArray[0]["genre_name"];
+     }
+
+     public function getGenreID($genreName) {
+      $sql = self::$baseSQL . " WHERE Genre_Name=?";
+      $statement = DatabaseHelper::runQuery($this->pdo, $sql, Array($genreName));
+      return $statement->fetchAll()[0]["genre_id"];
      }
 
 }
