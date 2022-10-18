@@ -39,6 +39,11 @@ return $statement;
 }
 
 class SongDB {
+
+   // public function getData ($DBCONNSTRING, $DBUSER, $DBPASS, $SQl)
+   // {
+
+   // }
    private static $baseSQL = "SELECT * FROM songs";
    //TODO: be explicit about columns being grabbed
    

@@ -126,23 +126,7 @@ function generateHeader()
 
 
 
-  <?php
-    }
-    
-
-
-    function indexList()
-    {
-        echo "<ul>"; 
-
-        echo "<li>"; 
-        
-
-    }
-
-    
-  {
-  ?>
+  
           
 <?php
     }
