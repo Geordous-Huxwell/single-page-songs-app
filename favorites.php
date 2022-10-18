@@ -11,27 +11,6 @@ if ( !isset($_SESSION["Favorites"]) ) {
 // retrieve favorites array for this user session
 $favorites = $_SESSION["Favorites"];
 
-echo json_encode($favorites);
-
-// grab filters
-$filter = "none";
-$filterVal= "all";
-
-foreach ($_GET as $key=>$value){
-    if ($value){
-        $filter = $key;
-        $filterVal = $value;
-    }
-}
-
-if ($filter == "yearOperator"){
-    $filter = "year";
-    $filterVal .= " " . $_GET["year"] . " inclusive";
-} elseif ($filter == "popOperator"){
-    $filter = "popularity";
-    $filterVal .= " than " . $_GET["popularity"];
-}
-
 function generateSongRows($songsArray, $artistDB, $genreDB){
     
     foreach ($songsArray as $song){
@@ -46,7 +25,7 @@ function generateSongRows($songsArray, $artistDB, $genreDB){
             <td class="center-data"><?=$genre?></td>
             <td class="center-data"><?=$song["popularity"]?></td>
             <!-- <td class="center-data"><?=$song["song_id"]?></td> -->
-            <td class="center-data"><a href="./addToFavorites.php?song_id=<?=$song["song_id"]?>">Add</a></td>
+            <td class="center-data"><a href="./removeFromFavorites.php?song_id=<?=$song["song_id"]?>">Remove</a></td>
             <td class="center-data"><a href="./index.php?title=<?=$song["title"]?>">View</a></td>
         </tr>
         <?php
@@ -144,13 +123,12 @@ form {
 
 </style>
 
-<a href="./emptyFavorites.php">Empty Favorites</a>
 
 <body>
     <?=generateHeader();?>
     <article>
-        <h1>Songs</h1>
-        <h4 class="filter">Clear Favorites <?=$filter?>: <?=$filterVal?> <form><button fromaction="./emptyFavorites.php">Clear</button></form></h4>
+        <h1>Favorites</h1>
+        <h4 class="filter"><form><button formaction="./emptyFavorites.php">Clear Favorites</button></form></h4>
         <div class="scroll-table">
         <table>
             <thead>
@@ -161,7 +139,7 @@ form {
                     <th>Genre</th>
                     <th>Popularity</th>
                     <!-- <th>Song ID</th> -->
-                    <th style="max-width: 75px">Add to Favourites</th>
+                    <th style="max-width: 75px">Remove from favourites</th>
                     <th>Details</th>
                 
             </thead>
