@@ -165,10 +165,8 @@ form {
             // search by genre
             elseif (isset($_GET['genre']) && !empty($_GET['genre']))
             {
-                $genreID = $genreDB -> getGenreID($_GET['genre']); 
+                $genreID = $genreDB -> getGenreID($_GET['genre']);
                 generateSongRows($songDB->getAllByGenre($genreID), $artistDB, $genreDB);
-                
-
             }
 
             // search by year
@@ -190,7 +188,7 @@ form {
                 if (isset($_GET['popOperator']) && ($_GET['popOperator'] == 'lower')){
                     generateSongRows($songDB->getAllLowerPop($_GET['popularity']), $artistDB, $genreDB);
                 }
-                elseif (isset($_GET['yearOperator']) && ($_GET['popOperator'] == 'greater')){
+                elseif (isset($_GET['popOperator']) && ($_GET['popOperator'] == 'greater')){
                     generateSongRows($songDB->getAllGreaterPop($_GET['popularity']), $artistDB, $genreDB);
                 }
                 else {
