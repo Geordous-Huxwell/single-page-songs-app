@@ -38,6 +38,7 @@ return $statement;
 }
 }
 
+// TODO: Surround DB functions in try-catches
 class SongDB {
 
    private static $baseSQL = "SELECT * FROM songs";

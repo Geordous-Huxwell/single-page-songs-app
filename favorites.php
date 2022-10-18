@@ -145,19 +145,14 @@ form {
             </thead>
             <tbody>
             <?php
-            // search by title
+            
             if (isset($_SESSION['Favorites']) && !empty($_SESSION['Favorites']))
             {
               // echo json_encode($_SESSION);
               foreach ($_SESSION['Favorites'] as $songID)
               {
-                // echo json_encode($songID); 
+                // echo json_encode($songID);
                  generateSongRows($songDB->getSongData($songID), $artistDB, $genreDB);
-                
-                
               }
-                
-
-
-
             }
+            ?>
