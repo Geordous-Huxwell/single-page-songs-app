@@ -40,10 +40,6 @@ return $statement;
 
 class SongDB {
 
-   // public function getData ($DBCONNSTRING, $DBUSER, $DBPASS, $SQl)
-   // {
-
-   // }
    private static $baseSQL = "SELECT * FROM songs";
    //TODO: be explicit about columns being grabbed
    
@@ -140,6 +136,15 @@ class SongDB {
       return $statement->fetchAll();
    }
 
+   public function getTopSongs() {
+      $sql = "SELECT song_id, title, artist_name, popularity
+      FROM songs INNER JOIN artists on songs.artist_id=artists.artist_id
+      ORDER BY popularity DESC
+      LIMIT 10;";
+      $statement = DatabaseHelper::runQuery($this->pdo, $sql, null);
+      return $statement->fetchAll();
+   }
+
 }
 
 class ArtistDB {
@@ -168,6 +173,16 @@ class ArtistDB {
       $statement = DatabaseHelper::runQuery($this->pdo, $sql, Array($artistName));
       return $statement->fetchAll()[0]["artist_id"];
      }
+
+     public function getTopArtists() {
+      $sql = "SELECT title, artist_name, COUNT(artist_name) AS artist_count
+      FROM songs INNER JOIN artists on songs.artist_id=artists.artist_id
+      GROUP BY artist_name
+      ORDER BY artist_count DESC
+      LIMIT 10;";
+      $statement = DatabaseHelper::runQuery($this->pdo, $sql, null);
+      return $statement->fetchAll();
+   }
 }
 
 class GenreDb

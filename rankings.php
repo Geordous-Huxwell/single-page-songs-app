@@ -30,19 +30,54 @@ require_once "./main.php";
 
 function generateTopSongs($songDB){
     $topSongs = $songDB->getTopSongs();
+    // echo json_encode($topSongs);
+    foreach($topSongs as $song){
+        ?>
+        <tr>
+            <td><?=$song["title"]?></td>
+            <td><?=$song["artist_name"]?></td>
+            <td><?=$song["popularity"]?></td>
+        </tr>
+        <?php
+    }
 }
 
+function generateTopArtists($artistDB){
+    $topArtists = $artistDB->getTopArtists();
+    // echo json_encode($topSongs);
+    foreach($topArtists as $artist){
+        ?>
+        <tr>
+            <td><?=$artist["artist_name"]?></td>
+            <td><?=$artist["artist_count"]?></td>
+        </tr>
+        <?php
+    }
+}
 generateHeader();
 ?>
 <style>
 .rankings-grid {
     display: grid;
-    grid-template-rows: repeat(2, 3fr);
-    grid-template-columns: repeat(4, 2fr);
+    grid-template-rows: repeat(4, 3fr);
+    grid-template-columns: repeat(2, 2fr);
+    width: 900px;
+    margin: auto;
+    gap: 50px;
+    justify-items: center;
 }
 .ranking-table {
     border: 1px red solid;
+}
 
+td {
+    font-weight: 300;
+}
+
+.table-title {
+    border: 1px blue solid;
+    width: fit-content;
+    margin: auto;
 }
 </style>
 <article>
@@ -51,6 +86,7 @@ generateHeader();
     <div class="rankings-grid">
         <div class="ranking-table">
             <div class="table-title">Top Songs</div>
+            <!-- TODO: make whole table head generation part of functions -->
             <table>
                 <thead>
                     <th>Title</th>
@@ -67,6 +103,7 @@ generateHeader();
                     <th>Artist</th>
                     <th>Song Count</th>
                 </thead>
+                <?php generateTopArtists($artistDB); ?>
             </table>
         </div>
         <div class="ranking-table">

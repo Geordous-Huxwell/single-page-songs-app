@@ -70,6 +70,7 @@ li {
 .grid {
     /* border: green 1px solid; */
     display: grid;
+    justify-content: center;
     grid-template-columns: repeat(4, 150px);
     grid-template-rows: repeat(2, 150px);
     gap: 25px;

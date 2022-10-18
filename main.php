@@ -77,12 +77,12 @@ function generateHeader()
       <style>
   /* Some navbar css from https://www.w3schools.com/howto/howto_js_topnav.asp */
   .topnav {
-    display:inline;
+    display:block;
+    width: fit-content;
     margin: auto;
-    padding-left: 25%;
-    padding-right: 25%;
     font-family: helvetica;
     font-weight: bold;
+    border: green 1px solid;
   }
   
   /* Style the links inside the navigation bar */
@@ -128,10 +128,7 @@ function generateHeader()
         <a class="fav" href="./favorites.php">Favourites</a>
         <br>
         <br>
-
-
-
-  
+      </div>
           
 <?php
     }
