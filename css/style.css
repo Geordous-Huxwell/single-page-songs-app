@@ -78,6 +78,7 @@ li {
     /* width: auto; */
     padding-left: 15%;
     padding-right: 15%;
+    justify-content: center;
 }
 
 .grid>* {

@@ -25,6 +25,26 @@ GROUP BY artist_name
 HAVING artist_count=1
 ORDER BY popularity DESC
 LIMIT 10; -->
+
+
+<!-- AT DA CLUB
+SELECT song_id, title, artist_name, danceability, SUM( (danceability*1.6) + 
+               (energy * 1.4)) AS CLUBINESS
+               FROM songs INNER JOIN artists on songs.artist_id=artists.artist_id
+               WHERE danceability > 80
+               ORDER BY CLUBINESS DESC
+               LIMIT 10; -->
+
+<!-- RUNNINESS
+SELECT song_id, title, artist_name, bpm, ((valence*1.6) + (energy*1.3)) AS RUNNINESS             
+      FROM songs INNER JOIN artists on songs.artist_id=artists.artist_id WHERE bpm >= 120 AND bpm <= 125      
+      ORDER BY Runniness DESC LIMIT 10; -->
+
+ <!-- STUDINESS
+SELECT song_id, title, artist_name, bpm, speechiness, ((acousticness*0.8) + (100 - speechiness) + (100 - valence)) AS STUDINESS             
+      FROM songs INNER JOIN artists on songs.artist_id=artists.artist_id  
+       WHERE bpm >= 100 AND bpm <= 115 AND speechiness <=20      
+       ORDER BY Studiness DESC LIMIT 10; -->
 <?php
 require_once "./main.php";
 
@@ -127,15 +147,43 @@ td {
         </div>
         <div class="ranking-table">
             <div class="table-title">Longest Acoustics</div>
+            <table>
+                <thead>
+                    <th>Title</th>
+                    <th>Artist</th>
+                    <th>acousticness</th>
+                </thead>
+            </table>
         </div>
         <div class="ranking-table">
             <div class="table-title">In Da Club</div>
+            <table>
+                <thead>
+                    <th>Title</th>
+                    <th>Artist</th>
+                    <th>Clubiness</th>
+                </thead>
+            </table>
         </div>
         <div class="ranking-table">
             <div class="table-title">Running Music</div>
+            <table>
+                <thead>
+                    <th>Title</th>
+                    <th>Artist</th>
+                    <th>Runniness</th>
+                </thead>
+            </table>
         </div>
         <div class="ranking-table">
             <div class="table-title">Study Time</div>
+            <table>
+                <thead>
+                    <th>Title</th>
+                    <th>Artist</th>
+                    <th>Studiness</th>
+                </thead>
+            </table>
         </div>
     </div>
 </article>
