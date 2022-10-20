@@ -19,7 +19,7 @@ ORDER BY genre_count DESC
 LIMIT 10; -->
 
 <!-- ONE HIT WONDERS
-SELECT artist_name, popularity, COUNT(artist_name) AS artist_count
+SELECT title, artist_name, popularity, COUNT(artist_name) AS artist_count
 FROM songs INNER JOIN artists on songs.artist_id=artists.artist_id
 GROUP BY artist_name
 HAVING artist_count=1
@@ -53,7 +53,7 @@ function generateTopSongs($songDB){
         <tr>
             <td><?=$song["title"]?></td>
             <td><?=$song["artist_name"]?></td>
-            <td><?=$song["popularity"]?></td>
+            <td class="num-col"><?=$song["popularity"]?></td>
         </tr>
         <?php
     }
@@ -67,7 +67,7 @@ function generateTopAcoustics($songDB)
         <tr>
             <td><?=$acoustic["title"]?></td>
             <td><?=$acoustic["artist_name"]?></td>
-            <td><?=$acoustic["acousticness"]?></td>
+            <td class="num-col"><?=number_format($acoustic["acousticness"], 0)?></td>
         </tr>
         <?php
     }
@@ -82,7 +82,7 @@ function generateTopClub ($songDB)
         <tr>
             <td><?=$club["title"]?></td>
             <td><?=$club["artist_name"]?></td>
-            <td><?=$club["CLUBINESS"]?></td>
+            <td class="num-col"><?=number_format($club["CLUBINESS"], 0)?></td>
         </tr>
         <?php
     }
@@ -96,7 +96,7 @@ function generateRunningSong($songDB)
         <tr>
             <td><?=$run["title"]?></td>
             <td><?=$run["artist_name"]?></td>
-            <td><?=$run["RUNNINESS"]?></td>
+            <td class="num-col"><?=number_format($run["RUNNINESS"],0)?></td>
         </tr>
         <?php
     }
@@ -110,7 +110,7 @@ function generateStudying($songDB)
         <tr>
             <td><?=$study["title"]?></td>
             <td><?=$study["artist_name"]?></td>
-            <td><?=$study["STUDINESS"]?></td>
+            <td class="num-col"><?=number_format($study["STUDINESS"], 0)?></td>
         </tr>
         <?php
     }
@@ -123,7 +123,7 @@ function generateTopArtists($artistDB){
         ?>
         <tr>
             <td><?=$artist["artist_name"]?></td>
-            <td><?=$artist["artist_count"]?></td>
+            <td class="num-col"><?=$artist["artist_count"]?></td>
         </tr>
         <?php
     }
@@ -136,7 +136,7 @@ function generateTopGenres($genreDB) {
         ?>
         <tr>
             <td><?=$genre["genre_name"]?></td>
-            <td><?=$genre["genre_count"]?></td>
+            <td class="num-col"><?=$genre["genre_count"]?></td>
         </tr>
         <?php
     }
@@ -150,46 +150,110 @@ function generateOneHitWonders($songDB) {
         <tr>
             <td><?=$song["title"]?></td>
             <td><?=$song["artist_name"]?></td>
-            <td><?=$song["popularity"]?></td>
+            <td class="num-col"><?=$song["popularity"]?></td>
         </tr>
         <?php
     }
 }
 
-
-generateHeader();
 ?>
+
 <style>
+h1{
+    width: fit-content;
+    margin:30px auto;
+    font-size: 42px;
+}
+
+#description {
+    text-align: center;
+}
+
 .rankings-grid {
     display: grid;
-    grid-template-rows: repeat(4, 3fr);
+    grid-template-rows: repeat(4, 1fr);
     grid-template-columns: repeat(2, 2fr);
     width: 900px;
     margin: auto;
     gap: 50px;
     justify-items: center;
 }
+
 .ranking-table {
-    border: 1px red solid;
+    /* border: 1px red solid; */
 }
 
-td {
-    font-weight: 300;
+.row-2 {
+    margin-top: -30px;
+}
+
+.row-3 {
+    margin-top: -110px;
+}
+
+.row-4 {
+    margin-top: -50px;
+}
+
+table {
+    /* margin-top: 15px; */
+    border-collapse: collapse;
+    margin: 15px auto;
+    border: 5px rgb(115, 63, 11) solid;
+    font-family: monospace;
+    font-size: 14px;
 }
 
 .table-title {
-    border: 1px blue solid;
+    /* border: 1px blue solid; */
     width: fit-content;
     margin: auto;
+    font-weight: 900;
+    font-size: 24px;
+    
 }
+
+.num-col, td {
+    text-align: center;
+}
+
+td {
+    padding: 4px 8px;
+    font-weight: 300;
+}
+
+th {
+    /* width: 100px; */
+    padding: 4px;
+    background-color: rgb(233, 217, 197);
+}
+
+td,
+th {
+    border: 2px black solid;
+    max-width: 150px;
+}
+
+/* striped table css from https://www.w3schools.com/howto/howto_css_table_zebra.asp */
+tr:nth-child(odd) {
+  background-color: #f2f2f2;
+}
+
+.num-col {
+    max-width: 75px;
+}
+
+
 </style>
+
+<?= generateHeader(); ?>
+  
 <article>
-    <h1>Song Rankings</h1>
-    <h4>description lorem ipsum</h4>
+    <h4 id="description"><?= generateFooter(); ?></h4>
+    <h1>Rankings</h1>
     <div class="rankings-grid">
         <div class="ranking-table">
             <div class="table-title">Top Songs</div>
-            <!-- TODO: make whole table head generation part of functions -->
             <table>
                 <thead>
                     <th>Title</th>
@@ -197,27 +261,6 @@ td {
                     <th>Pop.</th>
                 </thead>
                 <?php generateTopSongs($songDB); ?>
-            </table>
-        </div>
-        <div class="ranking-table">
-            <div class="table-title">Top Artists</div>
-            <table>
-                <thead>
-                    <th>Artist</th>
-                    <th>Song Count</th>
-                </thead>
-                <?php generateTopArtists($artistDB); ?>
-            </table>
-        </div>
-        <div class="ranking-table">
-            <div class="table-title">Top Genres</div>
-            <table>
-                <thead>
-                    <th>Genre</th>
-                    <th>Song Count</th>
-                </thead>
-                <?php generateTopGenres($genreDB); ?>
-
             </table>
         </div>
         <div class="ranking-table">
@@ -231,46 +274,67 @@ td {
                 <?php generateOneHitWonders($songDB); ?>
             </table>
         </div>
-        <div class="ranking-table">
+        <div class="ranking-table row-2">
+            <div class="table-title">Top Artists</div>
+            <table>
+                <thead>
+                    <th>Artist</th>
+                    <th>Song Count</th>
+                </thead>
+                <?php generateTopArtists($artistDB); ?>
+            </table>
+        </div>
+        <div class="ranking-table row-2">
+            <div class="table-title">Top Genres</div>
+            <table>
+                <thead>
+                    <th>Genre</th>
+                    <th>Song Count</th>
+                </thead>
+                <?php generateTopGenres($genreDB); ?>
+
+            </table>
+        </div>
+        <div class="ranking-table row-3">
             <div class="table-title">Longest Acoustics</div>
             <table>
                 <thead>
                     <th>Title</th>
                     <th>Artist</th>
-                    <th>acousticness</th>
+                    <th class="num-col">Acoustic Score</th>
                 </thead>
                 <?php generateTopAcoustics($songDB); ?>
             </table>
         </div>
-        <div class="ranking-table">
-            <div class="table-title">In Da Club</div>
+        <div class="ranking-table row-3">
+            <div class="table-title">Club Music</div>
             <table>
                 <thead>
                     <th>Title</th>
                     <th>Artist</th>
-                    <th>Clubiness</th>
+                    <th class="num-col">Club Score</th>
                 </thead>
                 <?php generateTopClub($songDB); ?>
             </table>
         </div>
-        <div class="ranking-table">
+        <div class="ranking-table row-4">
             <div class="table-title">Running Music</div>
             <table>
                 <thead>
                     <th>Title</th>
                     <th>Artist</th>
-                    <th>Runniness</th>
+                    <th class="num-col">Exercise Score</th>
                 </thead>
                 <?php generateRunningSong($songDB); ?>
             </table>
         </div>
-        <div class="ranking-table">
+        <div class="ranking-table row-4">
             <div class="table-title">Study Time</div>
             <table>
                 <thead>
                     <th>Title</th>
                     <th>Artist</th>
-                    <th>Studiness</th>
+                    <th class="num-col">Study Score</th>
                 </thead>
                 <?php generateStudying($songDB); ?>
             </table>

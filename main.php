@@ -49,11 +49,10 @@ function generateMetrics($metrics) {
   <div class="circle">
     <div class="datatype"><?=$metric?></div>
     <div class="value"><?=$value?></div>
-    <!-- <progress class="value" value='<?=$value?>' max="100"><?=$value?></progress> -->
   </div>
 
   <?php
-  } 
+  }
 }
 
 function generateHeader()
@@ -84,7 +83,6 @@ function generateHeader()
     font-weight: bold;
   }
   
-  /* Style the links inside the navigation bar */
   .topnav a.home, a.sPage, a.search, a.result, a.fav
   {
     display: inline-block;
@@ -102,17 +100,14 @@ function generateHeader()
     -webkit-text-stroke-color: black;
   }
   
-  /* Change the color of links on hover */
   .topnav a.home:hover, a.sPage:hover, a.search:hover, a.result:hover, a.fav:hover
   {
     background-color: #ddd;
     color: black;
   }
   
-  /* Add a color to the active/current link */
   .topnav a.home, a.sPage, a.search, a.result, a.fav
   {
-   /* background-color: rgb(115, 63, 11); */
     background-color: rgb(203, 70, 70);
     color: white;
   }
@@ -120,10 +115,10 @@ function generateHeader()
   </style>
 
       <div class="topnav">
-        <a class="home" href="./index.php">Random</a>
+        <a class="result" href="./rankings.php">Rankings</a>
         <a class="sPage" href="./results.php">Songs</a>
         <a class="search" href="./search.php">Search</a>
-        <a class="result" href="./rankings.php">Rankings</a>
+        <a class="home" href="./index.php">Random</a>
         <a class="fav" href="./favorites.php">Favourites</a>
         <br>
         <br>
@@ -134,16 +129,18 @@ function generateHeader()
     function generateFooter()
     {
       ?>
-      <!-- TODO: Harshad - make the header element into a function for use on each
-       page, maybe add some styling as well -->
        <br>
-    <header> COMP 3512 Assign1
-          <h4> <a href="https://github.com/Geordous-Huxwell" target="blank" class="Jc"> Joel Conley </a>,
-           <a href="https://github.com/Hkrishnaraj?tab=repositories"
-          target="blank" class="HK">
+    <header> COMP 3512 Assignment 1
+          <h4>
+            <a href="https://github.com/Geordous-Huxwell?tab=repositories"
+              target="blank" class="Jc">
+              Joel Conley </a>,
+            <a href="https://github.com/Hkrishnaraj?tab=repositories"
+              target="blank" class="HK">
             Harshad Krishnaraj </a></h4>
-          <a href="https://github.com/Geordous-Huxwell/single-page-songs-app.git" target="blank">
-            github repo link
+            <a href="https://github.com/Geordous-Huxwell/single-page-songs-app.git"
+              target="blank">
+            Github Repo
           </a>
       </header>
 
