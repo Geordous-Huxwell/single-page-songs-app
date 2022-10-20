@@ -28,12 +28,9 @@ LIMIT 10; -->
 
 
 <!-- AT DA CLUB
-SELECT song_id, title, artist_name, danceability, SUM( (danceability*1.6) + 
-               (energy * 1.4)) AS CLUBINESS
-               FROM songs INNER JOIN artists on songs.artist_id=artists.artist_id
-               WHERE danceability > 80
-               ORDER BY CLUBINESS DESC
-               LIMIT 10; -->
+SELECT song_id, title, artist_name, danceability, ((danceability1.6) + (energy1.4)) AS CLUBINESS             
+FROM songs INNER JOIN artists on songs.artist_id=artists.artist_id   WHERE Danceability > 80      
+ORDER BY Clubiness DESC LIMIT 10; -->
 
 <!-- RUNNINESS
 SELECT song_id, title, artist_name, bpm, ((valence*1.6) + (energy*1.3)) AS RUNNINESS             
@@ -57,6 +54,63 @@ function generateTopSongs($songDB){
             <td><?=$song["title"]?></td>
             <td><?=$song["artist_name"]?></td>
             <td><?=$song["popularity"]?></td>
+        </tr>
+        <?php
+    }
+}
+
+function generateTopAcoustics($songDB)
+{
+    $topAcoustic = $songDB->getAcousticSong();
+    foreach($topAcoustic as $acoustic){
+        ?>
+        <tr>
+            <td><?=$acoustic["title"]?></td>
+            <td><?=$acoustic["artist_name"]?></td>
+            <td><?=$acoustic["acousticness"]?></td>
+        </tr>
+        <?php
+    }
+
+}
+
+function generateTopClub ($songDB)
+{
+    $topClub = $songDB->getTheClub();
+    foreach($topClub as $club){
+        ?>
+        <tr>
+            <td><?=$club["title"]?></td>
+            <td><?=$club["artist_name"]?></td>
+            <td><?=$club["CLUBINESS"]?></td>
+        </tr>
+        <?php
+    }
+}
+
+function generateRunningSong($songDB)
+{
+    $topRun = $songDB->getRunningSong();
+    foreach($topRun as $run){
+        ?>
+        <tr>
+            <td><?=$run["title"]?></td>
+            <td><?=$run["artist_name"]?></td>
+            <td><?=$run["RUNNINESS"]?></td>
+        </tr>
+        <?php
+    }
+}
+
+function generateStudying($songDB)
+{
+    $topStudy = $songDB->getStudying();
+    foreach($topStudy as $study){
+        ?>
+        <tr>
+            <td><?=$study["title"]?></td>
+            <td><?=$study["artist_name"]?></td>
+            <td><?=$study["STUDINESS"]?></td>
         </tr>
         <?php
     }
@@ -153,6 +207,7 @@ td {
                     <th>Artist</th>
                     <th>acousticness</th>
                 </thead>
+                <?php generateTopAcoustics($songDB); ?>
             </table>
         </div>
         <div class="ranking-table">
@@ -163,6 +218,7 @@ td {
                     <th>Artist</th>
                     <th>Clubiness</th>
                 </thead>
+                <?php generateTopClub($songDB); ?>
             </table>
         </div>
         <div class="ranking-table">
@@ -173,6 +229,7 @@ td {
                     <th>Artist</th>
                     <th>Runniness</th>
                 </thead>
+                <?php generateRunningSong($songDB); ?>
             </table>
         </div>
         <div class="ranking-table">
@@ -183,6 +240,7 @@ td {
                     <th>Artist</th>
                     <th>Studiness</th>
                 </thead>
+                <?php generateStudying($songDB); ?>
             </table>
         </div>
     </div>
