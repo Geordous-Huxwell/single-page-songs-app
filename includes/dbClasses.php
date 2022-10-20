@@ -146,6 +146,18 @@ class SongDB {
       return $statement->fetchAll();
    }
 
+   public function getOneHitWonders() {
+      $sql = "SELECT title, artist_name, popularity, COUNT(artist_name) AS artist_count
+      FROM songs INNER JOIN artists on songs.artist_id=artists.artist_id
+      GROUP BY artist_name
+      HAVING artist_count=1
+      ORDER BY popularity DESC
+      LIMIT 10;";
+      $statement = DatabaseHelper::runQuery($this->pdo, $sql, null);
+      return $statement->fetchAll();
+   }
+
+
 
    public function getAcousticSong()
    {
@@ -254,11 +266,21 @@ class GenreDb
       return $genreArray[0]["genre_name"];
      }
 
-     public function getGenreID($genreName) {
+   public function getGenreID($genreName) {
       $sql = self::$baseSQL . " WHERE Genre_Name=?";
       $statement = DatabaseHelper::runQuery($this->pdo, $sql, Array($genreName));
       return $statement->fetchAll()[0]["genre_id"];
      }
+
+   public function getTopGenres() {
+      $sql = "SELECT title, genre_name, COUNT(genre_name) AS genre_count
+      FROM songs INNER JOIN genres on songs.genre_id=genres.genre_id
+      GROUP BY genre_name
+      ORDER BY genre_count DESC
+      LIMIT 10;";
+      $statement = DatabaseHelper::runQuery($this->pdo, $sql, null);
+      return $statement->fetchAll();
+   }
 
 }
 

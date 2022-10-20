@@ -74,6 +74,35 @@ function generateTopArtists($artistDB){
         <?php
     }
 }
+
+function generateTopGenres($genreDB) {
+    $topGenres = $genreDB->getTopGenres();
+    
+    foreach($topGenres as $genre){
+        ?>
+        <tr>
+            <td><?=$genre["genre_name"]?></td>
+            <td><?=$genre["genre_count"]?></td>
+        </tr>
+        <?php
+    }
+}
+
+function generateOneHitWonders($songDB) {
+    $oneHits = $songDB->getOneHitWonders();
+    
+    foreach($oneHits as $song){
+        ?>
+        <tr>
+            <td><?=$song["title"]?></td>
+            <td><?=$song["artist_name"]?></td>
+            <td><?=$song["popularity"]?></td>
+        </tr>
+        <?php
+    }
+}
+
+
 generateHeader();
 ?>
 <style>
@@ -130,9 +159,11 @@ td {
             <div class="table-title">Top Genres</div>
             <table>
                 <thead>
-                    <th>Artist</th>
+                    <th>Genre</th>
                     <th>Song Count</th>
                 </thead>
+                <?php generateTopGenres($genreDB); ?>
+
             </table>
         </div>
         <div class="ranking-table">
@@ -143,6 +174,7 @@ td {
                     <th>Artist</th>
                     <th>Pop.</th>
                 </thead>
+                <?php generateOneHitWonders($songDB); ?>
             </table>
         </div>
         <div class="ranking-table">

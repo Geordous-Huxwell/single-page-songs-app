@@ -82,7 +82,6 @@ function generateHeader()
     margin: auto;
     font-family: helvetica;
     font-weight: bold;
-    border: green 1px solid;
   }
   
   /* Style the links inside the navigation bar */
