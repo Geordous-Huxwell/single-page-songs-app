@@ -160,10 +160,10 @@ class SongDB {
 
    public function getAcousticSong()
    {
-      $sql = "SELECT song_id, title, artist_name, acousticness
+      $sql = "SELECT song_id, title, artist_name, acousticness, duration
             FROM songs INNER JOIN artists on songs.artist_id=artists.artist_id
             WHERE acousticness > 40
-            ORDER BY acousticness DESC
+            ORDER BY duration DESC
             LIMIT 10;";
       $statement = DatabaseHelper::runQuery($this->pdo, $sql, null);
       return $statement->fetchAll();
@@ -221,7 +221,6 @@ class ArtistDB {
       $sql = self::$baseSQL . " WHERE Artist_ID=?";
       $statement = DatabaseHelper::runQuery($this->pdo, $sql, Array($artistID));
       $artistArray = $statement->fetchAll();
-      // echo json_encode($artistArray);
       return $artistArray[0]["artist_name"];
      }
 
@@ -260,7 +259,6 @@ class GenreDb
       $sql = self::$baseSQL . " WHERE GENRE_ID=?";
       $statement = DatabaseHelper::runQuery($this->pdo, $sql, Array($genreID));
       $genreArray = $statement->fetchAll();
-      //   echo json_encode($genreArray);
       return $genreArray[0]["genre_name"];
      }
 

@@ -29,9 +29,7 @@ $genre = $genreDB -> getGenreName($genre);
 
 $year = $songData["year"];
 $seconds = $songData["duration"];
-$minutes = floor($seconds/60);
-$seconds = $seconds % 60;
-$duration = $minutes . ":" . $seconds;
+$duration = convertTime($seconds);
 $bpm = $songData["bpm"];
 $energy = $songData["energy"];
 $danceability = $songData["danceability"];
@@ -42,6 +40,15 @@ $speechiness = $songData["speechiness"];
 $popularity = $songData["popularity"];
 $metrics = $songDB->getSongMetrics($songID)[0];
 
+function convertTime($seconds){
+  $minutes = floor($seconds/60);
+  $seconds = $seconds % 60;
+  $seconds = sprintf("%'0-2s", $seconds); //add trailing 0 to single digit result for above computation
+  if (!$seconds){ //handle case of no remainder
+    $seconds = "00";
+  }
+  return $minutes . ":" . $seconds;
+}
 
 function generateMetrics($metrics) {
   foreach($metrics as $metric=>$value){
@@ -126,6 +133,7 @@ function generateHeader()
           
 <?php
     }
+    
     function generateFooter()
     {
       ?>

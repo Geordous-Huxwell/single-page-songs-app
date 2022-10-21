@@ -68,6 +68,7 @@ function generateTopAcoustics($songDB)
             <td><?=$acoustic["title"]?></td>
             <td><?=$acoustic["artist_name"]?></td>
             <td class="num-col"><?=number_format($acoustic["acousticness"], 0)?></td>
+            <td class="num-col"><?=convertTime($acoustic["duration"])?></td>
         </tr>
         <?php
     }
@@ -165,8 +166,17 @@ h1{
     font-size: 42px;
 }
 
+h1, .table-title {
+    font-family: helvetica;
+}
+
 #description {
     text-align: center;
+    border: 3px black solid;
+    border-radius: 5px;
+    width: fit-content;
+    margin: 20px auto;
+    padding: 10px;
 }
 
 .rankings-grid {
@@ -192,11 +202,10 @@ h1{
 }
 
 .row-4 {
-    margin-top: -50px;
+    margin-top: -25px;
 }
 
 table {
-    /* margin-top: 15px; */
     border-collapse: collapse;
     margin: 15px auto;
     border: 5px rgb(115, 63, 11) solid;
@@ -205,12 +214,10 @@ table {
 }
 
 .table-title {
-    /* border: 1px blue solid; */
     width: fit-content;
     margin: auto;
     font-weight: 900;
     font-size: 24px;
-    
 }
 
 .num-col, td {
@@ -223,9 +230,10 @@ td {
 }
 
 th {
-    /* width: 100px; */
     padding: 4px;
     background-color: rgb(233, 217, 197);
+    font-weight: 600;
+    font-size: 16px;
 }
 
 td,
@@ -302,6 +310,7 @@ tr:nth-child(odd) {
                     <th>Title</th>
                     <th>Artist</th>
                     <th class="num-col">Acoustic Score</th>
+                    <th class="num-col">Duration</th>
                 </thead>
                 <?php generateTopAcoustics($songDB); ?>
             </table>
