@@ -147,7 +147,7 @@ class SongDB {
    }
 
    public function getOneHitWonders() {
-      $sql = "SELECT title, artist_name, popularity, COUNT(artist_name) AS artist_count
+      $sql = "SELECT song_id, title, artist_name, popularity, COUNT(artist_name) AS artist_count
             FROM songs INNER JOIN artists on songs.artist_id=artists.artist_id
             GROUP BY artist_name
             HAVING artist_count=1
@@ -158,7 +158,7 @@ class SongDB {
    }
 
 
-   public function getAcousticSong()
+   public function getAcousticSongs()
    {
       $sql = "SELECT song_id, title, artist_name, acousticness, duration
             FROM songs INNER JOIN artists on songs.artist_id=artists.artist_id

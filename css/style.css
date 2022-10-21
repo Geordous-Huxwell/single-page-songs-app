@@ -40,6 +40,28 @@ summary:active {
     transform: translateY(1px);
 }
 
+summary::after {
+    content: "";
+    position: absolute;
+    top: -110%;
+    left: -210%;
+    width: 200%;
+    height: 200%;
+    opacity: 0;
+    transform: rotate(30deg);
+    background: rgba(255, 255, 255, 0.13);
+    background: linear-gradient( to right, rgba(255, 255, 255, 0.13) 0%, rgba(255, 255, 255, 0.13) 77%, rgba(255, 255, 255, 0.5) 92%, rgba(255, 255, 255, 0.0) 100%)
+}
+
+summary::after:hover {
+    opacity: 1;
+    top: -30%;
+    left: -30%;
+    transition-property: left, top, opacity;
+    transition-duration: 0.7s, 0.7s, 0.15s;
+    transition-timing-function: ease;
+}
+
 ul {
     /* border: yellow 1px solid; */
     display: flex;
@@ -75,7 +97,6 @@ li {
     grid-template-rows: repeat(2, 150px);
     gap: 25px;
     margin: 50px;
-    /* width: auto; */
     padding-left: 15%;
     padding-right: 15%;
     justify-content: center;

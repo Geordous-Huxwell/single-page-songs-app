@@ -47,11 +47,10 @@ require_once "./main.php";
 
 function generateTopSongs($songDB){
     $topSongs = $songDB->getTopSongs();
-    // echo json_encode($topSongs);
     foreach($topSongs as $song){
         ?>
         <tr>
-            <td><?=$song["title"]?></td>
+            <td><a href="./index.php?song_id=<?=$song["song_id"]?>"><?=$song["title"]?></a></td>
             <td><?=$song["artist_name"]?></td>
             <td class="num-col"><?=$song["popularity"]?></td>
         </tr>
@@ -59,31 +58,31 @@ function generateTopSongs($songDB){
     }
 }
 
-function generateTopAcoustics($songDB)
+function generateLongestAcoustics($songDB)
 {
-    $topAcoustic = $songDB->getAcousticSong();
-    foreach($topAcoustic as $acoustic){
+    $topAcoustic = $songDB->getAcousticSongs();
+    foreach($topAcoustic as $song){
         ?>
         <tr>
-            <td><?=$acoustic["title"]?></td>
-            <td><?=$acoustic["artist_name"]?></td>
-            <td class="num-col"><?=number_format($acoustic["acousticness"], 0)?></td>
-            <td class="num-col"><?=convertTime($acoustic["duration"])?></td>
+            <td><a href="./index.php?song_id=<?=$song["song_id"]?>"><?=$song["title"]?></a></td>
+            <td><?=$song["artist_name"]?></td>
+            <td class="num-col"><?=number_format($song["acousticness"], 0)?></td>
+            <td class="num-col"><?=convertTime($song["duration"])?></td>
         </tr>
         <?php
     }
 
 }
 
-function generateTopClub ($songDB)
+function generateTopClub($songDB)
 {
     $topClub = $songDB->getTheClub();
-    foreach($topClub as $club){
+    foreach($topClub as $song){
         ?>
         <tr>
-            <td><?=$club["title"]?></td>
-            <td><?=$club["artist_name"]?></td>
-            <td class="num-col"><?=number_format($club["CLUBINESS"], 0)?></td>
+            <td><a href="./index.php?song_id=<?=$song["song_id"]?>"><?=$song["title"]?></a></td>
+            <td><?=$song["artist_name"]?></td>
+            <td class="num-col"><?=number_format($song["CLUBINESS"], 0)?></td>
         </tr>
         <?php
     }
@@ -92,12 +91,12 @@ function generateTopClub ($songDB)
 function generateRunningSong($songDB)
 {
     $topRun = $songDB->getRunningSong();
-    foreach($topRun as $run){
+    foreach($topRun as $song){
         ?>
         <tr>
-            <td><?=$run["title"]?></td>
-            <td><?=$run["artist_name"]?></td>
-            <td class="num-col"><?=number_format($run["RUNNINESS"],0)?></td>
+            <td><a href="./index.php?song_id=<?=$song["song_id"]?>"><?=$song["title"]?></a></td>
+            <td><?=$song["artist_name"]?></td>
+            <td class="num-col"><?=number_format($song["RUNNINESS"],0)?></td>
         </tr>
         <?php
     }
@@ -106,12 +105,12 @@ function generateRunningSong($songDB)
 function generateStudying($songDB)
 {
     $topStudy = $songDB->getStudying();
-    foreach($topStudy as $study){
+    foreach($topStudy as $song){
         ?>
         <tr>
-            <td><?=$study["title"]?></td>
-            <td><?=$study["artist_name"]?></td>
-            <td class="num-col"><?=number_format($study["STUDINESS"], 0)?></td>
+            <td><a href="./index.php?song_id=<?=$song["song_id"]?>"><?=$song["title"]?></a></td>
+            <td><?=$song["artist_name"]?></td>
+            <td class="num-col"><?=number_format($song["STUDINESS"], 0)?></td>
         </tr>
         <?php
     }
@@ -119,7 +118,6 @@ function generateStudying($songDB)
 
 function generateTopArtists($artistDB){
     $topArtists = $artistDB->getTopArtists();
-    // echo json_encode($topSongs);
     foreach($topArtists as $artist){
         ?>
         <tr>
@@ -149,7 +147,7 @@ function generateOneHitWonders($songDB) {
     foreach($oneHits as $song){
         ?>
         <tr>
-            <td><?=$song["title"]?></td>
+            <td><a href="./index.php?song_id=<?=$song["song_id"]?>"><?=$song["title"]?></a></td>
             <td><?=$song["artist_name"]?></td>
             <td class="num-col"><?=$song["popularity"]?></td>
         </tr>
@@ -312,7 +310,7 @@ tr:nth-child(odd) {
                     <th class="num-col">Acoustic Score</th>
                     <th class="num-col">Duration</th>
                 </thead>
-                <?php generateTopAcoustics($songDB); ?>
+                <?php generateLongestAcoustics($songDB); ?>
             </table>
         </div>
         <div class="ranking-table row-3">

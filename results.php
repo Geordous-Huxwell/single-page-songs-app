@@ -23,7 +23,6 @@ if ($filter == "yearOperator"){
 function generateSongRows($songsArray, $artistDB, $genreDB){
     
     foreach ($songsArray as $song){
-        // echo json_encode($song);
         $artist = $artistDB->getArtistName($song["artist_id"]);
         $genre = $genreDB->getGenreName($song["genre_id"]);
         ?>
@@ -35,7 +34,7 @@ function generateSongRows($songsArray, $artistDB, $genreDB){
             <td class="center-data"><?=$song["popularity"]?></td>
             <!-- <td class="center-data"><?=$song["song_id"]?></td> -->
             <td class="center-data"><a href="./addToFavorites.php?song_id=<?=$song["song_id"]?>">Add</a></td>
-            <td class="center-data"><a href="./index.php?title=<?=$song["title"]?>">View</a></td>
+            <td class="center-data"><a href="./index.php?song_id=<?=$song["song_id"]?>">View</a></td>
         </tr>
         <?php
     }
@@ -61,7 +60,6 @@ table {
     border: 5px rgb(115, 63, 11) solid;
     font-family: monospace;
     font-size: 14px;
-    /* overflow-y: auto; */
 }
 
 td {
