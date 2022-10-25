@@ -34,7 +34,7 @@ function generateSongRows($songsArray, $artistDB, $genreDB){
             <td class="center-data"><?=$song["popularity"]?></td>
             <!-- <td class="center-data"><?=$song["song_id"]?></td> -->
             <td class="center-data"><a href="./addToFavorites.php?song_id=<?=$song["song_id"]?>">Add</a></td>
-            <td class="center-data"><a href="./index.php?song_id=<?=$song["song_id"]?>">View</a></td>
+            <td class="center-data"><a href="./songDetails.php?song_id=<?=$song["song_id"]?>">View</a></td>
         </tr>
         <?php
     }

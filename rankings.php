@@ -50,7 +50,7 @@ function generateTopSongs($songDB){
     foreach($topSongs as $song){
         ?>
         <tr>
-            <td><a href="./index.php?song_id=<?=$song["song_id"]?>"><?=$song["title"]?></a></td>
+            <td><a href="./songDetails.php?song_id=<?=$song["song_id"]?>"><?=$song["title"]?></a></td>
             <td><?=$song["artist_name"]?></td>
             <td class="num-col"><?=$song["popularity"]?></td>
         </tr>
@@ -64,7 +64,7 @@ function generateLongestAcoustics($songDB)
     foreach($topAcoustic as $song){
         ?>
         <tr>
-            <td><a href="./index.php?song_id=<?=$song["song_id"]?>"><?=$song["title"]?></a></td>
+            <td><a href="./songDetails.php?song_id=<?=$song["song_id"]?>"><?=$song["title"]?></a></td>
             <td><?=$song["artist_name"]?></td>
             <td class="num-col"><?=number_format($song["acousticness"], 0)?></td>
             <td class="num-col"><?=convertTime($song["duration"])?></td>
@@ -80,7 +80,7 @@ function generateTopClub($songDB)
     foreach($topClub as $song){
         ?>
         <tr>
-            <td><a href="./index.php?song_id=<?=$song["song_id"]?>"><?=$song["title"]?></a></td>
+            <td><a href="./songDetails.php?song_id=<?=$song["song_id"]?>"><?=$song["title"]?></a></td>
             <td><?=$song["artist_name"]?></td>
             <td class="num-col"><?=number_format($song["CLUBINESS"], 0)?></td>
         </tr>
@@ -94,7 +94,7 @@ function generateRunningSong($songDB)
     foreach($topRun as $song){
         ?>
         <tr>
-            <td><a href="./index.php?song_id=<?=$song["song_id"]?>"><?=$song["title"]?></a></td>
+            <td><a href="./songDetails.php?song_id=<?=$song["song_id"]?>"><?=$song["title"]?></a></td>
             <td><?=$song["artist_name"]?></td>
             <td class="num-col"><?=number_format($song["RUNNINESS"],0)?></td>
         </tr>
@@ -108,7 +108,7 @@ function generateStudying($songDB)
     foreach($topStudy as $song){
         ?>
         <tr>
-            <td><a href="./index.php?song_id=<?=$song["song_id"]?>"><?=$song["title"]?></a></td>
+            <td><a href="./songDetails.php?song_id=<?=$song["song_id"]?>"><?=$song["title"]?></a></td>
             <td><?=$song["artist_name"]?></td>
             <td class="num-col"><?=number_format($song["STUDINESS"], 0)?></td>
         </tr>
@@ -147,7 +147,7 @@ function generateOneHitWonders($songDB) {
     foreach($oneHits as $song){
         ?>
         <tr>
-            <td><a href="./index.php?song_id=<?=$song["song_id"]?>"><?=$song["title"]?></a></td>
+            <td><a href="./songDetails.php?song_id=<?=$song["song_id"]?>"><?=$song["title"]?></a></td>
             <td><?=$song["artist_name"]?></td>
             <td class="num-col"><?=$song["popularity"]?></td>
         </tr>

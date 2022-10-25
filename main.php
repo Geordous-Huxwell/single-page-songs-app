@@ -133,7 +133,7 @@ function generateHeader()
         <a class="result" href="./rankings.php">Rankings</a>
         <a class="sPage" href="./results.php">Songs</a>
         <a class="search" href="./search.php">Search</a>
-        <a class="home" href="./index.php">Random</a>
+        <a class="home" href="./songDetails.php">Random</a>
         <a class="fav" href="./favorites.php">Favourites</a>
         <br>
         <br>
