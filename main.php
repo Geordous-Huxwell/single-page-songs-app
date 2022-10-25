@@ -15,15 +15,24 @@ else {
   $songID = rand(1001, 1318);
   }
 
+
+
 $songData = $songDB->getSongData($songID)[0];
 
+
+
+// $typeData = $typeDB -> getTypeData($typeData)[0]; 
+
 $title = $songData["title"];
+
 $artistID = $songData["artist_id"];
 $artist = $artistDB->getArtistName($artistID);
-$artistType = $songData["artist_id"];
-$artistType = $typeDB -> getType($artistType);
-$genre = $songData["genre_id"];
-$genre = $genreDB -> getGenreName($genre);
+
+$genreID = $songData["genre_id"];
+$genre = $genreDB -> getGenreName($genreID);
+
+$typeID = $artistDB -> getTypeId($artistID); 
+$type = $typeDB -> getTypeName($typeID);
 
 
 $year = $songData["year"];

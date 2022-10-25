@@ -42,7 +42,7 @@ summary::after:hover {
               <li>Year: <?=$year?></li>
               <li>Length: <?=$duration?></li>
               <li>Genre: <?=$genre?></li>
-              <li>Type: <?=$artistType?></li>
+              <li>Type: <?=$type?></li>
             </ul>
           </h3>
         </details>
