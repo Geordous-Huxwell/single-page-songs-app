@@ -239,6 +239,14 @@ class ArtistDB {
       $statement = DatabaseHelper::runQuery($this->pdo, $sql, null);
       return $statement->fetchAll();
    }
+
+
+   public function getTypeId($artistID) {
+      $sql = self::$baseSQL . " WHERE Artist_ID=?";
+      $statement = DatabaseHelper::runQuery($this->pdo, $sql, Array($artistID));
+      $artistArray = $statement->fetchAll();
+      return $artistArray[0]["artist_type_id"];
+     }
 }
 
 class GenreDb
@@ -282,7 +290,7 @@ class GenreDb
 
 class TypeDb
 {
-   private static $baseSQL = "SELECT * FROM artists";
+   private static $baseSQL = "SELECT * FROM types";
    
    public function __construct($connection) {
        $this->pdo = $connection;
@@ -294,13 +302,33 @@ class TypeDb
       return $statement->fetchAll();
   }
 
-   public function getType($artistID) {
-      $sql = self::$baseSQL . " WHERE ARTIST_ID=?";
-      $statement = DatabaseHelper::runQuery($this->pdo, $sql, Array($artistID));
-      $typeArray = $statement->fetchAll();
-      return $typeArray[0]["artist_type_id"];
-     }
+  public function getTypeName($typeID) {
+   $sql = self::$baseSQL . " WHERE TYPE_ID=?";
+   $statement = DatabaseHelper::runQuery($this->pdo, $sql, Array($typeID));
+   $typeArray = $statement->fetchAll();
+   
+   return $typeArray[0]["type_name"];
+
+  }
+public function getTypeID($typeName) {
+   $sql = self::$baseSQL . " WHERE TYPE_NAME=?";
+   $statement = DatabaseHelper::runQuery($this->pdo, $sql, Array($typeName));
+   $typeArray = $statement->fetchAll();
+   return $typeArray[0]["type_name"];
+  }
+  
+
+  
+//   type_id,
+//   type_name
+   //   public function getGenreName($genreID) {
+   //    $sql = self::$baseSQL . " WHERE GENRE_ID=?";
+    //    $statement = DatabaseHelper::runQuery($this->pdo, $sql, Array($genreID));
+   //    $genreArray = $statement->fetchAll();
+   //    return $genreArray[0]["genre_name"];
+   //   }
 
 }
+
 
  ?>
