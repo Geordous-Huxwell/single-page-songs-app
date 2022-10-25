@@ -51,6 +51,13 @@ summary::after:hover {
           <?php generateMetrics($metrics); ?>
           
         </div>
+        <!-- <span><?=$songID?></span> -->
+        <div class="add-fav-div">
+          <form method="get" action="./addToFavorites.php?song_id=<?=$songID?>">
+            <button type='submit' name="song_id" value=<?=$songID?>>add to fav</button>
+          </form>
+          <!-- <a href="./addToFavorites.php?song_id=<?=$songID?>">fav</a> -->
+        </div>
     </article>
   </body>
   <?php

@@ -40,6 +40,8 @@ summary:active {
     transform: translateY(1px);
 }
 
+
+/* 
 summary::after {
     content: "";
     position: absolute;
@@ -60,7 +62,7 @@ summary::after:hover {
     transition-property: left, top, opacity;
     transition-duration: 0.7s, 0.7s, 0.15s;
     transition-timing-function: ease;
-}
+} */
 
 ul {
     /* border: yellow 1px solid; */
@@ -162,4 +164,22 @@ li {
 
 table {
     overflow: scroll;
+}
+
+.add-div-fav {
+    display: flex;
+    width: fit-content;
+    margin: auto;
+}
+
+.add-fav-div>button {
+    border-radius: 5px;
+    background-color: darkseagreen;
+    padding: 5px;
+    box-shadow: 2px 2px;
+}
+
+.add-div-fav>button:hover {
+    box-shadow: none;
+    transform: translate(2px, 2px);
 }

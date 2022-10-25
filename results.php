@@ -90,13 +90,6 @@ tr:nth-child(odd) {
   background-color: #f2f2f2;
 }
 
-tbody {
-    /* display: block; */
-    /* overflow:auto; */
-    /* height:300px; */
-    /* width:100%; */
-}
-
 /* scrollable table css from
 https://www.w3docs.com/snippets/html/how-to-create-a-table-with-a-fixed-header-and-scrollable-body.html */
 .scroll-table {

@@ -11,9 +11,6 @@ $typeDB = new TypeDb($conn);
 if (isset($_GET['song_id']) && !empty($_GET['song_id'])){
   $songID = $_GET['song_id'];
 }
-// else if (isset($_GET['title']) && !empty($_GET['title'])){
-//   $songID = $songDB->getSongID($_GET['title']);
-// }
 else {
   $songID = rand(1001, 1318);
   }
