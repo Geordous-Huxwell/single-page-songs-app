@@ -40,30 +40,6 @@ summary:active {
     transform: translateY(1px);
 }
 
-
-/* 
-summary::after {
-    content: "";
-    position: absolute;
-    top: -110%;
-    left: -210%;
-    width: 200%;
-    height: 200%;
-    opacity: 0;
-    transform: rotate(30deg);
-    background: rgba(255, 255, 255, 0.13);
-    background: linear-gradient( to right, rgba(255, 255, 255, 0.13) 0%, rgba(255, 255, 255, 0.13) 77%, rgba(255, 255, 255, 0.5) 92%, rgba(255, 255, 255, 0.0) 100%)
-}
-
-summary::after:hover {
-    opacity: 1;
-    top: -30%;
-    left: -30%;
-    transition-property: left, top, opacity;
-    transition-duration: 0.7s, 0.7s, 0.15s;
-    transition-timing-function: ease;
-} */
-
 ul {
     /* border: yellow 1px solid; */
     display: flex;
@@ -166,20 +142,20 @@ table {
     overflow: scroll;
 }
 
-.add-div-fav {
+.add-fav-div {
     display: flex;
     width: fit-content;
     margin: auto;
 }
 
-.add-fav-div>button {
+.add-fav-div>form>button {
     border-radius: 5px;
     background-color: darkseagreen;
     padding: 5px;
     box-shadow: 2px 2px;
 }
 
-.add-div-fav>button:hover {
+.add-fav-div>button:hover {
     box-shadow: none;
     transform: translate(2px, 2px);
 }

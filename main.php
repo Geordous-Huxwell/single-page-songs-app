@@ -127,6 +127,30 @@ function generateHeader()
     color: white;
   }
 
+.add-fav-div>form>button {
+    border-radius: 5px;
+    background-color: darkseagreen;
+    padding: 5px;
+    box-shadow: 2px 2px;
+}
+
+.add-fav-div {
+    display: flex;
+    width: fit-content;
+    margin: auto;
+}
+.add-fav-div>form>button:hover {
+  cursor: pointer;
+  background-color: blue;
+  color: azure;
+  font-weight: 600;
+}
+
+.add-fav-div>form>button:active {
+    box-shadow: none;
+    transform: translate(2px, 2px);
+}
+
   </style>
 
       <div class="topnav">

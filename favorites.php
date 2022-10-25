@@ -26,7 +26,7 @@ function generateSongRows($songsArray, $artistDB, $genreDB){
             <td class="center-data"><?=$song["popularity"]?></td>
             <!-- <td class="center-data"><?=$song["song_id"]?></td> -->
             <td class="center-data"><a href="./removeFromFavorites.php?song_id=<?=$song["song_id"]?>">Remove</a></td>
-            <td class="center-data"><a href="./songDetails.php?title=<?=$song["title"]?>">View</a></td>
+            <td class="center-data"><a href="./songDetails.php?song_id=<?=$song["song_id"]?>">View</a></td>
         </tr>
         <?php
     }
@@ -34,7 +34,7 @@ function generateSongRows($songsArray, $artistDB, $genreDB){
 ?>
 <style>
 h1{
-    width: 60px;
+    width: fit-content;
     margin-left: auto;
     margin-right: auto;
 }
@@ -103,7 +103,7 @@ thead th {
 }
 
 button {
-    margin-left: 15px;
+    /* margin-left: 15px; */
     color: white;
     background-color: cadetblue;
     padding: 5px 10px;
@@ -121,14 +121,23 @@ form {
     display: inline;
 }
 
+.fav-header{
+    display: flex;
+    width: fit-content;
+    margin: auto;
+}
 </style>
 
 
 <body>
     <?=generateHeader();?>
     <article>
-        <h1>Favorites</h1>
-        <h4 class="filter"><form><button formaction="./emptyFavorites.php">Clear Favorites</button></form></h4>
+        <div class="fav-header">
+            <h1>Favorites</h1>
+        </div>
+        <div class="fav-header">
+            <h4 class="filter"><form><button formaction="./emptyFavorites.php">Clear Favorites</button></form></h4>
+        </div>
         <div class="scroll-table">
         <table>
             <thead>
