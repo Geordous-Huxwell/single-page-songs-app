@@ -1,4 +1,4 @@
-<?php  
+<?php
 require_once './main.php';
 
 session_start();
@@ -161,3 +161,5 @@ form {
               }
             }
             ?>
+            </tbody>
+        </table>
