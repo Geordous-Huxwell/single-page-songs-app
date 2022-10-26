@@ -49,7 +49,6 @@ table {
     border: 5px rgb(115, 63, 11) solid;
     font-family: monospace;
     font-size: 14px;
-    /* overflow-y: auto; */
 }
 
 td {
@@ -57,7 +56,6 @@ td {
 }
 
 th {
-    /* width: 100px; */
     padding: 0px 4px;
     background-color: rgb(233, 217, 197);
 }
@@ -80,12 +78,6 @@ tr:nth-child(odd) {
   background-color: #f2f2f2;
 }
 
-tbody {
-    /* display: block; */
-    /* overflow:auto; */
-    /* height:300px; */
-    /* width:100%; */
-}
 
 /* scrollable table css from
 https://www.w3docs.com/snippets/html/how-to-create-a-table-with-a-fixed-header-and-scrollable-body.html */
@@ -100,7 +92,6 @@ thead th {
 }
 
 button {
-    /* margin-left: 15px; */
     color: white;
     background-color: cadetblue;
     padding: 5px 10px;
@@ -153,10 +144,8 @@ form {
             
             if (isset($_SESSION['Favorites']) && !empty($_SESSION['Favorites']))
             {
-              // echo json_encode($_SESSION);
               foreach ($_SESSION['Favorites'] as $songID)
               {
-                // echo json_encode($songID);
                  generateSongRows($songDB->getSongData($songID), $artistDB, $genreDB);
               }
             }

@@ -1,6 +1,5 @@
 <?php
 require_once './main.php';
-// echo json_encode($artistDB);
 ?>
 <style>
     h2 {
@@ -16,16 +15,13 @@ require_once './main.php';
         grid-row-gap: 20px;
         justify-items: center;
         width: fit-content;
-        /* border: 1px black solid; */
     }
     .row{
-        /* border: 1px green solid; */
         font-family: helvetica;
     }
     span {
         display: flex;
         margin-top: 10px;
-        /* border: 1px blue solid; */
         justify-content: center;
     }
 
@@ -43,7 +39,6 @@ require_once './main.php';
     }
 
     .pop-row {
-        /* border: red 1px solid; */
         margin: 4px 0px;
         text-align: center;
     }

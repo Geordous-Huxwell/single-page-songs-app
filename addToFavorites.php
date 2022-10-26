@@ -11,7 +11,7 @@ if ( !isset($_SESSION["Favorites"]) ) {
 
 // retrieve favorites array for this user session
 $favorites = $_SESSION["Favorites"];
-// echo json_encode($_GET);
+
 // now add passed favorite id to our favorites array
 // if song id is not in favs add it
 if (array_search($_GET["song_id"], $favorites) == false)
