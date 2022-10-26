@@ -187,9 +187,7 @@ h1, .table-title {
     justify-items: center;
 }
 
-.ranking-table {
-    /* border: 1px red solid; */
-}
+
 
 .row-2 {
     margin-top: -30px;

@@ -14,7 +14,6 @@ $favorites = $_SESSION["Favorites"];
 function generateSongRows($songsArray, $artistDB, $genreDB){
     
     foreach ($songsArray as $song){
-        // echo json_encode($song);
         $artist = $artistDB->getArtistName($song["artist_id"]);
         $genre = $genreDB->getGenreName($song["genre_id"]);
         ?>
@@ -24,7 +23,7 @@ function generateSongRows($songsArray, $artistDB, $genreDB){
             <td class="center-data"><?=$song["year"]?></td>
             <td class="center-data"><?=$genre?></td>
             <td class="center-data"><?=$song["popularity"]?></td>
-            <!-- <td class="center-data"><?=$song["song_id"]?></td> -->
+            <?=$song["song_id"]?></td> 
             <td class="center-data"><a href="./removeFromFavorites.php?song_id=<?=$song["song_id"]?>">Remove</a></td>
             <td class="center-data"><a href="./songDetails.php?song_id=<?=$song["song_id"]?>">View</a></td>
         </tr>
@@ -52,7 +51,6 @@ table {
     border: 5px rgb(115, 63, 11) solid;
     font-family: monospace;
     font-size: 14px;
-    /* overflow-y: auto; */
 }
 
 td {
@@ -60,7 +58,6 @@ td {
 }
 
 th {
-    /* width: 100px; */
     padding: 0px 4px;
     background-color: rgb(233, 217, 197);
 }
@@ -83,12 +80,6 @@ tr:nth-child(odd) {
   background-color: #f2f2f2;
 }
 
-tbody {
-    /* display: block; */
-    /* overflow:auto; */
-    /* height:300px; */
-    /* width:100%; */
-}
 
 /* scrollable table css from
 https://www.w3docs.com/snippets/html/how-to-create-a-table-with-a-fixed-header-and-scrollable-body.html */
@@ -103,7 +94,6 @@ thead th {
 }
 
 button {
-    /* margin-left: 15px; */
     color: white;
     background-color: cadetblue;
     padding: 5px 10px;
@@ -147,7 +137,6 @@ form {
                     <th>Year</th>
                     <th>Genre</th>
                     <th>Popularity</th>
-                    <!-- <th>Song ID</th> -->
                     <th style="max-width: 75px">Remove from favourites</th>
                     <th>Details</th>
                 
@@ -157,10 +146,8 @@ form {
             
             if (isset($_SESSION['Favorites']) && !empty($_SESSION['Favorites']))
             {
-              // echo json_encode($_SESSION);
               foreach ($_SESSION['Favorites'] as $songID)
               {
-                // echo json_encode($songID);
                  generateSongRows($songDB->getSongData($songID), $artistDB, $genreDB);
               }
             }

@@ -240,7 +240,6 @@ class ArtistDB {
       return $statement->fetchAll();
    }
 
-
    public function getTypeId($artistID) {
       $sql = self::$baseSQL . " WHERE Artist_ID=?";
       $statement = DatabaseHelper::runQuery($this->pdo, $sql, Array($artistID));
@@ -248,7 +247,6 @@ class ArtistDB {
       return $artistArray[0]["artist_type_id"];
      }
 }
-
 class GenreDb
 {
    private static $baseSQL = "SELECT * FROM genres";

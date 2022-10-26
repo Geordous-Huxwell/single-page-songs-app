@@ -67,7 +67,6 @@ td {
 }
 
 th {
-    /* width: 100px; */
     padding: 0px 4px;
     background-color: rgb(233, 217, 197);
 }
@@ -135,7 +134,6 @@ form {
                     <th>Year</th>
                     <th>Genre</th>
                     <th>Popularity</th>
-                    <!-- <th>Song ID</th> -->
                     <th style="max-width: 75px">Add to Favourites</th>
                     <th>Details</th>
                 
@@ -151,7 +149,6 @@ form {
                 $artistID = $artistDB->getArtistID($_GET['artist']);
                 generateSongRows($songDB->getAllByArtist($artistID), $artistDB, $genreDB);
             }
-            // TODO: Harshad - implement search by genre based on how search by artist works
 
             // search by genre
             elseif (isset($_GET['genre']) && !empty($_GET['genre']))
