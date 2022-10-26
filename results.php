@@ -1,7 +1,7 @@
 <?php
 require_once './main.php';
 
-// grab filters
+// grab filters for displaying confirmation of search parameters
 $filter = "none";
 $filterVal= "all";
 
@@ -32,7 +32,6 @@ function generateSongRows($songsArray, $artistDB, $genreDB){
             <td class="center-data"><?=$song["year"]?></td>
             <td class="center-data"><?=$genre?></td>
             <td class="center-data"><?=$song["popularity"]?></td>
-            <!-- <td class="center-data"><?=$song["song_id"]?></td> -->
             <td class="center-data"><a href="./addToFavorites.php?song_id=<?=$song["song_id"]?>">Add</a></td>
             <td class="center-data"><a href="./songDetails.php?song_id=<?=$song["song_id"]?>">View</a></td>
         </tr>
@@ -42,9 +41,11 @@ function generateSongRows($songsArray, $artistDB, $genreDB){
 ?>
 <style>
 h1{
-    width: 60px;
+    width: fit-content;
     margin-left: auto;
     margin-right: auto;
+    font-size: 42px;
+    font-family: helvetica;
 }
 
 .filter {
@@ -111,6 +112,11 @@ button {
     box-shadow: 2px 2px black;
 }
 
+button: {
+    cursor: pointer;
+    background-color: black;
+}
+
 button:active {
     transform: translate(1px, 1px);
     box-shadow: none;
@@ -124,19 +130,19 @@ form {
     <?=generateHeader();?>
     <article>
         <h1>Songs</h1>
-        <h4 class="filter">Results filtered by <?=$filter?>: <?=$filterVal?> <form><button fromaction="./results.php">Clear</button></form></h4>
+        <h4 class="filter">Results filtered by <?=$filter?>: <?=$filterVal?>
+            <form method="get" action="./results.php"><button type="submit">Clear</button></form>
+        </h4>
         <div class="scroll-table">
         <table>
             <thead>
-                
-                    <th>Title</th>
-                    <th>Artist</th>
-                    <th>Year</th>
-                    <th>Genre</th>
-                    <th>Popularity</th>
-                    <th style="max-width: 75px">Add to Favourites</th>
-                    <th>Details</th>
-                
+                <th>Title</th>
+                <th>Artist</th>
+                <th>Year</th>
+                <th>Genre</th>
+                <th>Popularity</th>
+                <th style="max-width: 75px">Add to Favourites</th>
+                <th>Details</th>
             </thead>
             <tbody>
             <?php
@@ -144,6 +150,7 @@ form {
             if (isset($_GET['title']) && !empty($_GET['title'])){
                 generateSongRows($songDB->filterSongs($_GET['title']), $artistDB, $genreDB);
             }
+
             // search by artist
             elseif (isset($_GET['artist']) && !empty($_GET['artist'])){
                 $artistID = $artistDB->getArtistID($_GET['artist']);
@@ -159,30 +166,35 @@ form {
 
             // search by year
             elseif (isset($_GET['year']) && !empty($_GET['year'])){
-            
+                //before or equal to year
                 if (isset($_GET['yearOperator']) && ($_GET['yearOperator'] == 'before')){
                     generateSongRows($songDB->getAllBeforeYear($_GET['year']), $artistDB, $genreDB);
                 }
+                //after or equal to year
                 elseif (isset($_GET['yearOperator']) && ($_GET['yearOperator'] == 'after')){
                     generateSongRows($songDB->getAllAfterYear($_GET['year']), $artistDB, $genreDB);
                 }
+                //exactly equal to year
                 else {
                     generateSongRows($songDB->getAllByYear($_GET['year']), $artistDB, $genreDB);
                 }
             }
             // search by popularity
             elseif (isset($_GET['popularity']) && ($_GET['popularity'] > 0)){
-            
+                //lower than or equal to given popularity
                 if (isset($_GET['popOperator']) && ($_GET['popOperator'] == 'lower')){
                     generateSongRows($songDB->getAllLowerPop($_GET['popularity']), $artistDB, $genreDB);
                 }
+                //greater than or equal to given popularity
                 elseif (isset($_GET['popOperator']) && ($_GET['popOperator'] == 'greater')){
                     generateSongRows($songDB->getAllGreaterPop($_GET['popularity']), $artistDB, $genreDB);
                 }
+                //exact match to given popularity
                 else {
                     generateSongRows($songDB->getAllByPop($_GET['popularity']), $artistDB, $genreDB);
                 }
             }
+            //list all songs if no search parameters provided
             else {
                 generateSongRows($songDB->getAll(), $artistDB, $genreDB);
             }

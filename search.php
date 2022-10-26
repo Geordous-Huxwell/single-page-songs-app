@@ -6,6 +6,8 @@ require_once './main.php';
         width: fit-content;
         margin-left: auto;
         margin-right: auto;
+        font-size: 42px;
+        font-family: helvetica;
     }
 
     .search-box {
@@ -16,9 +18,11 @@ require_once './main.php';
         justify-items: center;
         width: fit-content;
     }
+
     .row{
         font-family: helvetica;
     }
+
     span {
         display: flex;
         margin-top: 10px;

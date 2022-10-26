@@ -42,7 +42,10 @@ return $statement;
 // TODO: Surround DB functions in try-catches
 class SongDB {
 
-   private static $baseSQL = "SELECT * FROM songs";
+   private static $baseSQL = "SELECT song_id, title, artist_id, genre_id, year,
+                              bpm, energy, danceability, loudness, liveness, valence,
+                              duration, acousticness, speechiness, popularity
+                              FROM songs";
    //TODO: be explicit about columns being grabbed
    
    public function __construct($connection) {
@@ -206,7 +209,8 @@ class SongDB {
 }
 
 class ArtistDB {
-   private static $baseSQL = "SELECT * FROM artists";
+   private static $baseSQL = "SELECT artist_id, artist_name, artist_type_id
+                              FROM artists";
    
    public function __construct($connection) {
        $this->pdo = $connection;
@@ -250,7 +254,7 @@ class ArtistDB {
 }
 class GenreDb
 {
-   private static $baseSQL = "SELECT * FROM genres";
+   private static $baseSQL = "SELECT genre_id, genre_name FROM genres";
    
    public function __construct($connection) {
        $this->pdo = $connection;
@@ -289,7 +293,7 @@ class GenreDb
 
 class TypeDb
 {
-   private static $baseSQL = "SELECT * FROM types";
+   private static $baseSQL = "SELECT type_id, type_name FROM types";
    
    public function __construct($connection) {
        $this->pdo = $connection;
@@ -316,17 +320,6 @@ public function getTypeID($typeName) {
    return $typeArray[0]["type_name"];
   }
   
-
-  
-//   type_id,
-//   type_name
-   //   public function getGenreName($genreID) {
-   //    $sql = self::$baseSQL . " WHERE GENRE_ID=?";
-    //    $statement = DatabaseHelper::runQuery($this->pdo, $sql, Array($genreID));
-   //    $genreArray = $statement->fetchAll();
-   //    return $genreArray[0]["genre_name"];
-   //   }
-
 }
 
 

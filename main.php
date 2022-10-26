@@ -141,7 +141,7 @@ function generateHeader()
 }
 .add-fav-div>form>button:hover {
   cursor: pointer;
-  background-color: blue;
+  background-color: #1f70f2;
   color: azure;
   font-weight: 600;
 }

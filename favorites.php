@@ -3,7 +3,7 @@ require_once './main.php';
 
 session_start();
 
-if ( !isset($_SESSION["Favorites"]) ) {
+if (!isset($_SESSION["Favorites"])) {
    $_SESSION["Favorites"] = [];
   }
 
@@ -30,10 +30,12 @@ function generateSongRows($songsArray, $artistDB, $genreDB){
 }
 ?>
 <style>
-h1{
+h1 {
     width: fit-content;
     margin-left: auto;
     margin-right: auto;
+    font-size: 42px;
+    font-family: helvetica;
 }
 
 .filter {
@@ -98,6 +100,12 @@ button {
     border: 1px cadetblue solid;
     border-radius: 2px;
     box-shadow: 2px 2px black;
+}
+
+button:hover {
+    cursor: pointer;
+    background: black;
+    font-weight: 600;
 }
 
 button:active {

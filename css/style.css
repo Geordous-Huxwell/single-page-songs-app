@@ -8,10 +8,6 @@ article {
     box-shadow: 0px 0px 10px 10px;
 }
 
-h2 {
-   
-}
-
 details {
     text-align: center;
     margin-top: 50px;
@@ -131,22 +127,4 @@ li {
 
 table {
     overflow: scroll;
-}
-
-.add-fav-div {
-    display: flex;
-    width: fit-content;
-    margin: auto;
-}
-
-.add-fav-div>form>button {
-    border-radius: 5px;
-    background-color: darkseagreen;
-    padding: 5px;
-    box-shadow: 2px 2px;
-}
-
-.add-fav-div>button:hover {
-    box-shadow: none;
-    transform: translate(2px, 2px);
 }

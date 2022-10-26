@@ -1,5 +1,5 @@
 <?php
-require_once './main.php';
+require './main.php';
 
 ?>
 <html>
@@ -26,12 +26,10 @@ require_once './main.php';
           <?php generateMetrics($metrics); ?>
           
         </div>
-        <!-- <span><?=$songID?></span> -->
         <div class="add-fav-div">
           <form method="get" action="./addToFavorites.php?song_id=<?=$songID?>">
             <button type='submit' name="song_id" value=<?=$songID?>>Add to Faves</button>
           </form>
-          <!-- <a href="./addToFavorites.php?song_id=<?=$songID?>">fav</a> -->
         </div>
     </article>
   </body>
