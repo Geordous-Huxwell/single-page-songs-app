@@ -143,8 +143,6 @@ h1, .table-title {
     justify-items: center;
 }
 
-
-
 .row-2 {
     margin-top: -30px;
 }
@@ -197,6 +195,10 @@ th {
 /* striped table css from https://www.w3schools.com/howto/howto_css_table_zebra.asp */
 tr:nth-child(odd) {
   background-color: #f2f2f2;
+}
+
+tr:hover {
+    background-color: #f0c24595; 
 }
 
 .num-col {

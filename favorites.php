@@ -80,6 +80,9 @@ tr:nth-child(odd) {
   background-color: #f2f2f2;
 }
 
+tr:hover {
+    background-color: #f0c24595;
+}
 
 /* scrollable table css from
 https://www.w3docs.com/snippets/html/how-to-create-a-table-with-a-fixed-header-and-scrollable-body.html */
