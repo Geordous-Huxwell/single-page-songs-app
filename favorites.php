@@ -1,20 +1,18 @@
 <?php  
 require_once './main.php';
 
-// ensure sessions works on this page
 session_start();
-// if no favorites in session, initialize it to empty array
+
 if ( !isset($_SESSION["Favorites"]) ) {
    $_SESSION["Favorites"] = [];
   }
 
-// retrieve favorites array for this user session
 $favorites = $_SESSION["Favorites"];
 
 function generateSongRows($songsArray, $artistDB, $genreDB){
     
     foreach ($songsArray as $song){
-        // echo json_encode($song);
+        
         $artist = $artistDB->getArtistName($song["artist_id"]);
         $genre = $genreDB->getGenreName($song["genre_id"]);
         ?>
@@ -24,7 +22,6 @@ function generateSongRows($songsArray, $artistDB, $genreDB){
             <td class="center-data"><?=$song["year"]?></td>
             <td class="center-data"><?=$genre?></td>
             <td class="center-data"><?=$song["popularity"]?></td>
-            <!-- <td class="center-data"><?=$song["song_id"]?></td> -->
             <td class="center-data"><a href="./removeFromFavorites.php?song_id=<?=$song["song_id"]?>">Remove</a></td>
             <td class="center-data"><a href="./songDetails.php?song_id=<?=$song["song_id"]?>">View</a></td>
         </tr>
@@ -147,7 +144,6 @@ form {
                     <th>Year</th>
                     <th>Genre</th>
                     <th>Popularity</th>
-                    <!-- <th>Song ID</th> -->
                     <th style="max-width: 75px">Remove from favourites</th>
                     <th>Details</th>
                 

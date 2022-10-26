@@ -1,3 +1,4 @@
+<!-- DatabaseHelper class attributed to Randy Connolly -->
 <?php
 class DatabaseHelper {
  /* Returns a connection object to a database */
