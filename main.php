@@ -52,7 +52,7 @@ function convertTime($seconds){
   
   $minutes = floor($seconds/60);
   $seconds = $seconds % 60;
-  $seconds = sprintf("%'0-2s", $seconds); //add trailing 0 if single digit result from above computation
+  $seconds = sprintf("%'02s", $seconds); //add leading 0 if single digit result from above computation
   if (!$seconds){ //handle case of no remainder
     $seconds = "00";
   }
